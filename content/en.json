@@ -1,0 +1,147 @@
+{
+  "Lang": "en",
+  "OGLocale": "en_US",
+  "Text": {
+    "homeTitle": "GOUI — Lightweight Golang GUI Framework, No cgo",
+    "homeDescription": "Build lightweight, modern desktop apps in Go with GOUI. A native Golang GUI framework for Windows, macOS and Linux, without cgo, GCC or a browser engine.",
+    "startTitle": "Go GUI Tutorial — Build Your First GOUI Desktop App",
+    "startDescription": "Create your first Go desktop GUI with GOUI v0.1.0. Install the module, build a counter app with CGO_ENABLED=0, and learn platform runtime requirements.",
+    "skip": "Skip to content",
+    "navFeatures": "Features",
+    "navDemo": "Demo",
+    "navStart": "Get started",
+    "eyebrow": "A NATIVE GUI FRAMEWORK FOR GO",
+    "heroTitle": "Desktop apps.\nEntirely in Go.",
+    "heroLead": "GOUI is a lightweight Golang GUI framework for building modern desktop applications. Write your interface and your logic in Go—not in a browser engine.",
+    "heroStart": "Build your first app",
+    "heroDemo": "Try the demo",
+    "heroNote": "No cgo. No GCC. No browser engine.",
+    "releaseLabel": "FIRST RELEASE",
+    "releaseStatus": "Published",
+    "screenshotCaption": "Real GOUI demo · light and dark styles · three desktop platforms",
+    "screenshotLabel": "Choose a platform screenshot",
+    "screenshotAlt": "GOUI demo showing desktop controls, modern styling and a sidebar on",
+    "statBuild": "Build with",
+    "statPlatforms": "Desktop platforms",
+    "statLicense": "Open-source license",
+    "introKicker": "SMALL BY DESIGN",
+    "introTitle": "A desktop toolkit, not a web stack.",
+    "introLead": "Use Go's toolchain, embed your assets, and ship a focused native application. GOUI handles the parts a desktop interface needs, without becoming an all-purpose platform SDK.",
+    "reasonOneTitle": "Your existing toolchain",
+    "reasonOneText": "Build with CGO_ENABLED=0. Native APIs are loaded at runtime, so building your application requires no C/C++ compiler or development headers.",
+    "reasonTwoTitle": "One binary, one app",
+    "reasonTwoText": "Windows and Linux applications can run as a single executable. On macOS, wrap the binary in an .app for identity, icons and signing. Native system libraries are still required.",
+    "reasonThreeTitle": "Modern, with native roots",
+    "reasonThreeText": "Light/dark styles and accent colors meet native window chrome, text layout, IME, clipboard and file dialogs. Choose declarative views or imperative widgets.",
+    "featuresKicker": "PRACTICAL FROM DAY ONE",
+    "featuresTitle": "Simple doesn't mean incomplete.",
+    "featuresLead": "The first release provides the foundations and controls for small desktop apps, from utilities and note-taking tools to data-oriented workspaces.",
+    "architectureTitle": "Use only the layers you need.",
+    "architectureLead": "Learned from GTK4, Flutter, Qt, Avalonia and SwiftUI. Adapted to Go, rather than copied wholesale.",
+    "layerUI": "Declarative views and explicit update coordination",
+    "layerGUI": "Widgets, layouts, painting, events, focus and signals",
+    "layerPlatform": "Native windows, input, drawing and typography",
+    "codeKicker": "GO, ALL THE WAY DOWN",
+    "codeTitle": "An interface you can read.",
+    "codeLead": "Views are ordinary Go values. State updates request a coalesced rebuild; you decide how to structure your application.",
+    "codeLink": "Follow the complete tutorial",
+    "copy": "Copy",
+    "copied": "Copied",
+    "copyFailed": "Copy unavailable. Select the code and copy it manually.",
+    "downloadKicker": "SEE IT FOR YOURSELF",
+    "downloadTitle": "A real app. A small download.",
+    "downloadLead": "The demo brings together editing, data views, detachable tabs, overlays, graphics and system integration. Try light/dark modes, accent colors and eight UI languages.",
+    "download": "Download demo",
+    "downloadSize": "Published download",
+    "checksum": "SHA-256 checksums",
+    "releaseNotes": "Release notes",
+    "downloadNotes": "Linux: make the binary executable with chmod +x. macOS: extract the ZIP and open GOUI Demo.app; the bundle is ad-hoc signed, not notarized. ZIP size is not executable size.",
+    "measurementTitle": "Lightweight, with the numbers in context.",
+    "measurementText": "With Go 1.25.8, CGO_ENABLED=0, -trimpath and stripped symbols, the documented minimal app builds are 4.46–4.75 MiB. Linux/X11 Software 1x reference measurements report 28.6 MiB PSS for a minimal app and 46.2 MiB for the demo. These are development measurements—not release download sizes, Go heap sizes, or promises for every platform.",
+    "measurementLink": "Read measurement conditions and results",
+    "platformKicker": "NATIVE WHERE IT MATTERS",
+    "platformTitle": "Three desktops. Clear requirements.",
+    "platformIntro": "No cgo is a build property, not a claim that the application has no runtime dependencies.",
+    "windowsText": "Windows x64 · Win32 windows · DirectWrite text · Direct2D, OpenGL or Software drawing.",
+    "macText": "macOS Apple Silicon · AppKit windows · Core Text · OpenGL or Software drawing. Signing and notarization remain application distribution steps.",
+    "linuxText": "Linux x64 · X11 · Pango/Cairo text · OpenGL or Software drawing. Needs native X11, GL, GLib, Fontconfig, Pango/Cairo and GTK runtime libraries. Wayland sessions require XWayland; behavior must be checked on the target desktop.",
+    "limitations": "v0.1.0 is a first release: APIs are still evolving. Touch, additional platforms and window systems, more application controls, and continued performance work are on the roadmap.",
+    "faqKicker": "BEFORE YOU START",
+    "faqTitle": "A few useful answers.",
+    "ctaTitle": "Keep your app in Go.",
+    "ctaText": "Start with a small window. Grow into the layers and controls your application actually needs.",
+    "footerText": "Open-source native desktop tools for Go.",
+    "footerLicense": "MIT source license",
+    "footerAttribution": "GOUI artwork adapts the Go gopher by Renee French (CC BY 4.0).",
+    "footerSource": "Website source",
+    "startKicker": "YOUR FIRST DESKTOP APP",
+    "startHeading": "A Go GUI, in a few steps.",
+    "startLead": "Build a small counter application with GOUI v0.1.0. The same interface code targets Windows, macOS and Linux; no C/C++ compiler is needed.",
+    "prereqTitle": "Before you begin",
+    "prereqText": "Install Go 1.24 or newer and use a supported desktop environment. The published demo targets Windows x64, macOS Apple Silicon and Linux x64/X11. Linux also needs the native runtime libraries described below.",
+    "stepOne": "Create a module",
+    "stepOneText": "Pin the first release so this tutorial does not silently move to a newer API.",
+    "stepTwo": "Write your interface",
+    "stepTwoText": "Save the following as main.go. The Modern stylesheet follows system settings; clicking the button updates the state and rebuilds the view.",
+    "stepThree": "Build and run",
+    "stepThreeText": "On Linux or macOS, use the following commands. Run the application on your desktop, not in a session without a display.",
+    "powershell": "Windows PowerShell",
+    "powershellText": "Use -H=windowsgui to build without a console window. Omit that flag while debugging if you want to see terminal output.",
+    "stepFour": "Choose the next layer",
+    "stepFourText": "ui is the declarative adapter; gui provides imperative widgets; widgets contains additional controls. Application behavior belongs to your app, not the view declarations.",
+    "linkAPI": "Browse the v0.1.0 API",
+    "linkWidgets": "Additional controls",
+    "linkCustom": "Custom widgets and views",
+    "linkSkill": "Develop with an AI assistant",
+    "packagingTitle": "Building is not always packaging.",
+    "packagingText": "An ordinary go build is enough to create the executable. The optional cmd/goui tool prepares Windows icon/version resources, macOS .app metadata and icons, and Linux desktop/icon resources from goui.toml. It does not remove system runtime requirements.",
+    "packagingLink": "Read the build and package guide",
+    "requirementsTitle": "Runtime requirements",
+    "nextTitle": "You're ready to build something small.",
+    "nextText": "Try the demo, browse the examples, then implement the application that matters to you. v0.1.0 is a starting point, with APIs still evolving."
+  },
+  "Features": [
+    {
+      "Title": "Everyday controls",
+      "Text": "Buttons, labels, icons, menus, dropdowns, check/radio buttons, switches and linear or circular progress indicators."
+    },
+    {
+      "Title": "Editing that feels native",
+      "Text": "Unicode text editing, CJK IME, selection, undo/redo, clipboard, keyboard shortcuts and Tab focus navigation."
+    },
+    {
+      "Title": "Data and flexible layouts",
+      "Text": "Constraint-based boxes, wrapping, scrolling, overlays, split views, virtualized lists, trees and tables with custom cells."
+    },
+    {
+      "Title": "Multi-window workspaces",
+      "Text": "Reorder tabs, transfer them between windows, detach into a new window, and use native drag and drop."
+    },
+    {
+      "Title": "Graphics and appearance",
+      "Text": "Style-aware SVG icons, light/dark modes, accent colors, HiDPI, transparency, shadows and frame-driven animation."
+    },
+    {
+      "Title": "System and developer tools",
+      "Text": "File dialogs, file-access credentials, timers, system settings, URL/file opening, build tooling and opt-in semantic UI inspection."
+    }
+  ],
+  "FAQs": [
+    {
+      "Title": "Is GOUI a web wrapper?",
+      "Text": "No. GOUI draws widgets through native graphics backends and uses native text layout. It does not embed a browser engine."
+    },
+    {
+      "Title": "Do I need GCC or cgo?",
+      "Text": "No C/C++ compiler is required to build your app. GOUI supports CGO_ENABLED=0 and binds native libraries at runtime. Runtime library requirements still apply."
+    },
+    {
+      "Title": "Can I cross-compile?",
+      "Text": "Supported targets can be built with the Go toolchain without cgo. Packaging, signing and actual platform validation are separate steps; a successful build does not verify native behavior."
+    },
+    {
+      "Title": "Is everything in v0.1.0 stable?",
+      "Text": "No. This release is intended for building small applications and gathering practical feedback. Public APIs continue to evolve; pin a version and review changes when upgrading."
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+package main
+
+import (
+    "fmt"
+    "log"
+
+    "github.com/golang-gui/goui/theme/modern"
+    "github.com/golang-gui/goui/ui"
+)
+
+func main() {
+    count := ui.MakeState(0)
+    err := ui.Run("com.example.Hello", func(app ui.App) ui.RootView {
+        return ui.Root().
+            StyleSheet(modern.FromSettings(app.Settings())).
+            Windows(
+                ui.Window("main").
+                    Title("Hello GOUI").
+                    Size(480, 240).
+                    Content(
+                        ui.VBox(
+                            ui.Label(fmt.Sprintf("Clicked %d times", count.Get())),
+                            ui.Button("Click me").OnClick(func() {
+                                count.Update(func(old int) int { return old + 1 })
+                            }),
+                        ).Spacing(12).Padding(20),
+                    ),
+            )
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+}

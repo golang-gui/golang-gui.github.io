@@ -1,0 +1,63 @@
+{{define "layout"}}<!doctype html>
+<html lang="{{.Lang}}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{.Title}}</title>
+  <meta name="description" content="{{.Description}}">
+  {{if eq .Kind "404"}}<meta name="robots" content="noindex">{{else}}<link rel="canonical" href="{{.Canonical}}">{{end}}
+  {{if .EnglishURL}}
+  <link rel="alternate" hreflang="en" href="{{.EnglishURL}}">
+  <link rel="alternate" hreflang="zh-CN" href="{{.ChineseURL}}">
+  <link rel="alternate" hreflang="x-default" href="{{.EnglishURL}}">
+  {{end}}
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GOUI">
+  <meta property="og:title" content="{{.Title}}">
+  <meta property="og:description" content="{{.Description}}">
+  {{if .Canonical}}<meta property="og:url" content="{{.Canonical}}">{{end}}
+  <meta property="og:locale" content="{{.OGLocale}}">
+  <meta property="og:image" content="https://golang-gui.github.io/assets/demo-windows.png">
+  <meta property="og:image:width" content="822">
+  <meta property="og:image:height" content="779">
+  <meta property="og:image:alt" content="GOUI desktop demo on Windows">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{.Title}}">
+  <meta name="twitter:description" content="{{.Description}}">
+  <meta name="twitter:image" content="https://golang-gui.github.io/assets/demo-windows.png">
+  <link rel="icon" type="image/svg+xml" href="/assets/goui-mark.svg">
+  <meta name="theme-color" content="#f5f8fa">
+  <link rel="stylesheet" href="/assets/site.css">
+  <script src="/assets/site.js" defer></script>
+  {{if .StructuredData}}<script type="application/ld+json">{{.StructuredData}}</script>{{end}}
+</head>
+<body data-copy-label="{{.T "copy"}}" data-copied-label="{{.T "copied"}}" data-copy-failed="{{.T "copyFailed"}}">
+  <a class="skip-link" href="#main">{{.T "skip"}}</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="{{.HomePath}}" aria-label="GOUI home"><img src="/assets/goui-logo.svg" alt="GOUI" width="122" height="51"></a>
+      <nav aria-label="{{if eq .Lang "zh-CN"}}主导航{{else}}Main navigation{{end}}">
+        <a class="nav-secondary" href="{{.HomePath}}#features">{{.T "navFeatures"}}</a>
+        <a class="nav-secondary" href="{{.HomePath}}#demo">{{.T "navDemo"}}</a>
+        <a href="https://github.com/golang-gui/goui">GitHub <span aria-hidden="true">↗</span></a>
+        {{if .OtherPath}}<a class="language" href="{{.OtherPath}}" lang="{{if eq .Lang "en"}}zh-CN{{else}}en{{end}}">{{.OtherLabel}}</a>{{end}}
+        <a class="button button-small" href="{{.StartPath}}">{{.T "navStart"}}</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    {{if eq .Kind "home"}}{{template "home" .}}{{else if eq .Kind "start"}}{{template "start" .}}{{else if eq .Kind "org"}}{{template "org" .}}{{else}}{{template "not-found" .}}{{end}}
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-main">
+      <div><a class="footer-brand" href="/">golang-gui</a><p>{{.T "footerText"}}</p></div>
+      <div class="footer-links"><a href="https://github.com/golang-gui/goui">GitHub</a><a href="https://pkg.go.dev/github.com/golang-gui/goui@{{.Version}}">API</a><a href="https://github.com/golang-gui/golang-gui.github.io">{{.T "footerSource"}}</a></div>
+    </div>
+    <div class="container footer-legal">
+      <a href="https://github.com/golang-gui/goui/blob/{{.Version}}/LICENSE">{{.T "footerLicense"}}</a>
+      <p><a href="https://go.dev/blog/gopher">{{.T "footerAttribution"}}</a></p>
+    </div>
+  </footer>
+  <div class="sr-only" role="status" aria-live="polite" id="copy-status"></div>
+</body>
+</html>{{end}}
