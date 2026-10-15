@@ -46,8 +46,8 @@ func TestBuild(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if len(pages) != 6 {
-		t.Fatalf("got %d pages, want 5 public pages plus 404", len(pages))
+	if len(pages) != 5 {
+		t.Fatalf("got %d pages, want 4 public pages plus 404", len(pages))
 	}
 	seen := make(map[string]bool)
 	titles := make(map[string]bool)
@@ -81,6 +81,9 @@ func TestBuild(t *testing.T) {
 				if !strings.Contains(body, "name=\"robots\" content=\"noindex\"") || strings.Contains(body, "rel=\"canonical\"") {
 					t.Fatal("404 must be noindex and have no successful-page canonical")
 				}
+				if strings.Contains(body, "data-theme-toggle") {
+					t.Fatal("404 must not have a theme toggle")
+				}
 			} else {
 				if !strings.Contains(body, "rel=\"canonical\" href=\""+p.Canonical+"\"") {
 					t.Fatal("missing self canonical")
@@ -98,8 +101,21 @@ func TestBuild(t *testing.T) {
 				}
 			}
 			if p.Kind == "home" || p.Kind == "start" {
-				if !strings.Contains(body, "github.com/golang-gui/goui@v0.1.0") || strings.Contains(body, "goui@latest") {
+				if !strings.Contains(body, "github.com/golang-gui/goui@v0.1.1") || strings.Contains(body, "goui@latest") {
 					t.Fatal("tutorial must pin the released version")
+				}
+				for _, want := range []string{
+					"data-theme-toggle",
+					`content="#f6f6f8" media="(prefers-color-scheme: light)"`,
+					`content="#101014" media="(prefers-color-scheme: dark)"`,
+					`localStorage.getItem("theme")`,
+					`document.documentElement.dataset.theme`,
+					`data-theme-icon="dark"`,
+					`data-theme-icon="light"`,
+				} {
+					if !strings.Contains(body, want) {
+						t.Errorf("missing %s", want)
+					}
 				}
 			}
 			checkLinks(t, out, p.Path, body)
@@ -186,13 +202,13 @@ func checkSitemap(t *testing.T, out string) {
 			locations[location] = true
 		}
 	}
-	for _, path := range []string{"/", "/goui/", "/goui/zh-cn/", "/goui/getting-started/", "/goui/zh-cn/getting-started/"} {
+	for _, path := range []string{"/", "/zh-cn/", "/getting-started/", "/zh-cn/getting-started/"} {
 		if !locations[baseURL+path] {
 			t.Errorf("missing sitemap URL %s", path)
 		}
 	}
-	if len(locations) != 5 {
-		t.Errorf("got %d sitemap URLs, want five", len(locations))
+	if len(locations) != 4 {
+		t.Errorf("got %d sitemap URLs, want four canonical pages", len(locations))
 	}
 }
 
@@ -201,9 +217,12 @@ func TestReleaseAndExample(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	p := pages[0]
-	for _, asset := range p.Downloads {
-		if asset.Bytes <= 0 || asset.URL != projectURL+"/releases/download/"+p.Version+"/"+asset.File {
+	home, tutorial := pages[0], pages[1]
+	if home.Kind != "home" || tutorial.Kind != "start" {
+		t.Fatalf("unexpected page order: %s, %s", home.Kind, tutorial.Kind)
+	}
+	for _, asset := range home.Downloads {
+		if asset.Bytes <= 0 || asset.URL != projectURL+"/releases/download/"+home.DemoVersion+"/"+asset.File {
 			t.Errorf("invalid download %s", asset.File)
 		}
 		digest, err := hex.DecodeString(asset.SHA256)
@@ -211,10 +230,18 @@ func TestReleaseAndExample(t *testing.T) {
 			t.Errorf("invalid SHA256 for %s", asset.File)
 		}
 	}
-	if _, err := parser.ParseFile(token.NewFileSet(), "main.go", p.Example, parser.AllErrors); err != nil {
-		t.Fatal(err)
+	for name, example := range map[string]string{"home": home.Example, "tutorial": tutorial.Example} {
+		if _, err := parser.ParseFile(token.NewFileSet(), "main.go", example, parser.AllErrors); err != nil {
+			t.Errorf("%s example does not parse: %v", name, err)
+		}
 	}
-	for _, screenshot := range p.Screenshots {
+	if home.Example == tutorial.Example {
+		t.Error("home and tutorial examples must differ")
+	}
+	if strings.Contains(home.Example, "MakeState") || !strings.Contains(home.Example, `ui.Label("Hello GOUI!")`) {
+		t.Error("home example must be the minimal helloworld app")
+	}
+	for _, screenshot := range home.Screenshots {
 		if screenshot.Width <= 0 || screenshot.Height <= 0 {
 			t.Fatal("missing native image dimensions")
 		}
@@ -229,5 +256,37 @@ func TestReleaseAndExample(t *testing.T) {
 		if other == nil || other.OtherPath != p.Path || other.Kind != p.Kind {
 			t.Errorf("language alternatives do not reciprocate for %s", p.Path)
 		}
+	}
+}
+
+func TestBuildInPlace(t *testing.T) {
+	root := t.TempDir()
+	for _, directory := range []string{"templates", "content", "assets"} {
+		if err := copyAssets(filepath.Join(sourceRoot(t), directory), filepath.Join(root, directory)); err != nil {
+			t.Fatal(err)
+		}
+	}
+	logo := filepath.Join(root, "assets", "goui-logo.svg")
+	before, err := os.ReadFile(logo)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := build(root, root); err != nil {
+		t.Fatal(err)
+	}
+	for _, file := range []string{"index.html", "zh-cn/index.html", "getting-started/index.html", "zh-cn/getting-started/index.html", "404.html"} {
+		if _, err := os.Stat(filepath.Join(root, file)); err != nil {
+			t.Fatal(err)
+		}
+	}
+	if _, err := os.Stat(filepath.Join(root, "goui")); !os.IsNotExist(err) {
+		t.Fatal("refresh must not recreate the old goui directory")
+	}
+	after, err := os.ReadFile(logo)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !bytes.Equal(before, after) {
+		t.Fatal("refreshing HTML modified the source logo")
 	}
 }

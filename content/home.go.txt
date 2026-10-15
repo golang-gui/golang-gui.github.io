@@ -1,0 +1,11 @@
+package main
+
+import "github.com/golang-gui/goui/ui"
+
+func main() {
+	ui.Run("org.golang-gui.hello", func(app ui.App) ui.RootView {
+		return ui.Window("main").
+			Title("Hello World").
+			Content(ui.Label("Hello GOUI!"))
+	})
+}

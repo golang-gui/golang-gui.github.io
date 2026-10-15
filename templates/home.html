@@ -1,50 +1,55 @@
 {{define "home"}}
 <section class="hero container">
   <div class="hero-copy">
-    <a class="release-pill" href="{{.URL}}"><span class="status-dot" aria-hidden="true"></span>{{.Version}} <span class="pill-divider" aria-hidden="true">/</span> {{.T "releaseLabel"}} <span aria-hidden="true">↗</span></a>
-    <p class="eyebrow">{{.T "eyebrow"}}</p>
     <h1>{{.T "heroTitle"}}</h1>
     <p class="hero-lead">{{.T "heroLead"}}</p>
-    <div class="hero-actions"><a class="button" href="{{.StartPath}}">{{.T "heroStart"}} <span aria-hidden="true">→</span></a><a class="button button-outline" href="#demo">{{.T "heroDemo"}}</a></div>
-    <p class="hero-note">{{.T "heroNote"}}</p>
-    <div class="hero-stats"><div><strong>CGO_ENABLED=0</strong><span>{{.T "statBuild"}}</span></div><div><strong>3</strong><span>{{.T "statPlatforms"}}</span></div><div><strong>MIT</strong><span>{{.T "statLicense"}}</span></div></div>
+    <div class="hero-actions"><a class="button" href="{{.StartPath}}">{{.T "heroStart"}}</a><a class="button button-outline" href="#demo">{{.T "heroDemo"}}</a></div>
   </div>
-  <div class="showcase" data-gallery>
-    <div class="gallery-top"><span class="gallery-title">GOUI Demo</span><div class="platform-switch" role="group" aria-label="{{.T "screenshotLabel"}}" hidden>{{range .Screenshots}}<button type="button" data-platform="{{.Platform}}" aria-pressed="false">{{.Platform}}</button>{{end}}</div></div>
-    <div class="screenshots">{{range .Screenshots}}<figure data-screen="{{.Platform}}"><a href="/assets/{{.File}}"><img src="/assets/{{.File}}" alt="{{$.T "screenshotAlt"}} {{.Platform}}" width="{{.Width}}" height="{{.Height}}" {{if eq .Platform "Windows"}}fetchpriority="high"{{else}}loading="lazy"{{end}}></a><figcaption>{{.Platform}}</figcaption></figure>{{end}}</div>
-    <p class="gallery-caption">{{.T "screenshotCaption"}}</p>
+  <div class="showcase" data-gallery data-carousel-role="{{.T "screenshotCarouselRole"}}" data-slide-role="{{.T "screenshotSlideRole"}}" aria-label="{{.T "screenshotLabel"}}">
+    <div class="screenshots" id="screenshot-stage" aria-live="off">{{range .Screenshots}}<figure data-screen="{{.Platform}}"><a class="screenshot-image" href="/assets/{{.File}}" aria-label="{{$.T "screenshotOpen"}} · {{.Platform}}"><img src="/assets/{{.File}}" alt="{{$.T "screenshotAlt"}} {{.Platform}}" width="{{.Width}}" height="{{.Height}}" {{if eq .Platform "Windows"}}fetchpriority="high"{{else}}loading="lazy"{{end}}></a><figcaption>{{.Platform}}</figcaption></figure>{{end}}</div>
+    <div class="gallery-toolbar">
+      <div class="platform-switch" role="group" aria-label="{{.T "screenshotLabel"}}" hidden>{{range .Screenshots}}<button type="button" data-platform="{{.Platform}}" aria-controls="screenshot-stage" aria-pressed="false">{{.Platform}}</button>{{end}}</div>
+      <div class="gallery-controls" role="group" aria-label="{{.T "screenshotControls"}}" hidden>
+        <button class="gallery-control" type="button" data-carousel-prev aria-label="{{.T "screenshotPrevious"}}" aria-controls="screenshot-stage"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg></button>
+        <button class="gallery-control" type="button" data-carousel-next aria-label="{{.T "screenshotNext"}}" aria-controls="screenshot-stage"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m10 6 6 6-6 6"/></svg></button>
+        <button class="gallery-control" type="button" data-carousel-toggle data-play-label="{{.T "screenshotPlay"}}" data-pause-label="{{.T "screenshotPause"}}" aria-label="{{.T "screenshotPause"}}" title="{{.T "screenshotPause"}}" aria-controls="screenshot-stage"><span data-pause-icon aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg></span><span data-play-icon aria-hidden="true" hidden><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="m8 5 11 7-11 7z"/></svg></span></button>
+      </div>
+    </div>
+    <span class="sr-only" data-gallery-status role="status" aria-live="polite"></span>
   </div>
 </section>
 
 <section class="section section-white">
-  <div class="container"><div class="section-heading"><p class="eyebrow">{{.T "introKicker"}}</p><h2>{{.T "introTitle"}}</h2><p>{{.T "introLead"}}</p></div>
-    <div class="reasons"><article><span class="reason-number">01</span><h3>{{.T "reasonOneTitle"}}</h3><p>{{.T "reasonOneText"}}</p></article><article><span class="reason-number">02</span><h3>{{.T "reasonTwoTitle"}}</h3><p>{{.T "reasonTwoText"}}</p></article><article><span class="reason-number">03</span><h3>{{.T "reasonThreeTitle"}}</h3><p>{{.T "reasonThreeText"}}</p></article></div>
+  <div class="container"><div class="section-heading"><h2>{{.T "introTitle"}}</h2><p>{{.T "introLead"}}</p></div>
+    <div class="reasons"><article><h3>{{.T "reasonOneTitle"}}</h3><p>{{.T "reasonOneText"}}</p></article><article><h3>{{.T "reasonTwoTitle"}}</h3><p>{{.T "reasonTwoText"}}</p></article><article><h3>{{.T "reasonThreeTitle"}}</h3><p>{{.T "reasonThreeText"}}</p></article></div>
+  </div>
+</section>
+
+<section class="section section-ink">
+  <div class="container code-section"><div class="code-copy"><h2>{{.T "codeTitle"}}</h2><p>{{.T "codeLead"}}</p><div class="install-line"><code>go get github.com/golang-gui/goui@{{.Version}}</code></div><a class="text-link" href="{{.StartPath}}">{{.T "codeLink"}} <span aria-hidden="true">→</span></a></div><div class="code-block"><div class="code-toolbar"><span>main.go</span><button type="button" data-copy hidden>{{.T "copy"}}</button></div><pre><code>{{.Example}}</code></pre></div></div>
+</section>
+
+<section class="section section-white" id="demo">
+  <div class="container">
+    <div class="section-heading"><h2>{{.T "downloadTitle"}}</h2><p>{{.T "downloadLead"}}</p></div>
+    <div class="downloads">{{range .Downloads}}<article class="download-card"><div class="download-platform"><h3>{{.Platform}}</h3></div><p>{{.Target}}</p><p class="download-size"><strong>{{.Size}}</strong> <span>{{$.T "downloadSize"}}</span></p><a class="button button-outline" href="{{.URL}}">{{$.T "download"}} <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg></a></article>{{end}}</div>
+    <div class="download-details"><p>{{.T "downloadNotes"}}</p><div><a href="{{.Checksums}}">{{.T "checksum"}}</a><a href="{{.DemoURL}}">{{.DemoVersion}} · {{.T "releaseNotes"}}</a><span>{{.T "releaseStatus"}} {{.DemoPublished}}</span></div></div>
+    <aside class="measurement"><h3>{{.T "measurementTitle"}}</h3><p>{{.T "measurementText"}}</p></aside>
   </div>
 </section>
 
 <section class="section container" id="features">
-  <div class="section-heading"><p class="eyebrow">{{.T "featuresKicker"}}</p><h2>{{.T "featuresTitle"}}</h2><p>{{.T "featuresLead"}}</p></div>
-  <div class="feature-grid">{{range $i, $item := .Features}}<article class="feature"><span class="feature-index" aria-hidden="true">{{printf "%02d" (ordinal $i)}}</span><h3>{{$item.Title}}</h3><p>{{$item.Text}}</p></article>{{end}}</div>
+  <div class="section-heading"><h2>{{.T "featuresTitle"}}</h2><p>{{.T "featuresLead"}}</p></div>
+  <div class="feature-grid">{{range .Features}}<article class="feature"><h3>{{.Title}}</h3><p>{{.Text}}</p></article>{{end}}</div>
   <div class="architecture"><div><h3>{{.T "architectureTitle"}}</h3><p>{{.T "architectureLead"}}</p></div><dl><div><dt>ui</dt><dd>{{.T "layerUI"}}</dd></div><div><dt>gui</dt><dd>{{.T "layerGUI"}}</dd></div><div><dt>platform</dt><dd>{{.T "layerPlatform"}}</dd></div></dl></div>
 </section>
 
-<section class="section section-ink">
-  <div class="container code-section"><div class="code-copy"><p class="eyebrow">{{.T "codeKicker"}}</p><h2>{{.T "codeTitle"}}</h2><p>{{.T "codeLead"}}</p><div class="install-line"><code>go get github.com/golang-gui/goui@{{.Version}}</code></div><a class="text-link" href="{{.StartPath}}">{{.T "codeLink"}} <span aria-hidden="true">→</span></a></div><div class="code-block"><div class="code-toolbar"><span>main.go</span><button type="button" data-copy hidden>{{.T "copy"}}</button></div><pre><code>{{.Example}}</code></pre></div></div>
-</section>
-
-<section class="section container" id="demo">
-  <div class="section-heading"><p class="eyebrow">{{.T "downloadKicker"}}</p><h2>{{.T "downloadTitle"}}</h2><p>{{.T "downloadLead"}}</p></div>
-  <div class="downloads">{{range .Downloads}}<article class="download-card"><div class="download-platform"><h3>{{.Platform}}</h3><span class="download-version">{{$.Version}}</span></div><p>{{.Target}}</p><p class="download-size"><strong>{{.Size}}</strong> <span>{{$.T "downloadSize"}}</span></p><a class="button button-outline" href="{{.URL}}">{{$.T "download"}} <span aria-hidden="true">↓</span></a></article>{{end}}</div>
-  <div class="download-details"><p>{{.T "downloadNotes"}}</p><div><a href="{{.Checksums}}">{{.T "checksum"}}</a><a href="{{.URL}}">{{.T "releaseNotes"}}</a><span>{{.T "releaseStatus"}} {{.Published}}</span></div></div>
-  <aside class="measurement"><h3>{{.T "measurementTitle"}}</h3><p>{{.T "measurementText"}}</p><a class="text-link" href="https://github.com/golang-gui/goui/blob/{{.Version}}/README.md#size-and-memory">{{.T "measurementLink"}} <span aria-hidden="true">↗</span></a></aside>
-</section>
-
 <section class="section section-white">
-  <div class="container platform-section"><div class="section-heading"><p class="eyebrow">{{.T "platformKicker"}}</p><h2>{{.T "platformTitle"}}</h2><p>{{.T "platformIntro"}}</p></div><div class="platform-list"><article><h3>Windows</h3><p>{{.T "windowsText"}}</p></article><article><h3>macOS</h3><p>{{.T "macText"}}</p></article><article><h3>Linux</h3><p>{{.T "linuxText"}}</p></article></div></div>
+  <div class="container platform-section"><div class="section-heading"><h2>{{.T "platformTitle"}}</h2><p>{{.T "platformIntro"}}</p></div><div class="platform-list"><article><h3>Windows</h3><p>{{.T "windowsText"}}</p></article><article><h3>macOS</h3><p>{{.T "macText"}}</p></article><article><h3>Linux</h3><p>{{.T "linuxText"}}</p></article></div></div>
   <p class="container limitations">{{.T "limitations"}}</p>
 </section>
 
-<section class="section container faq-section"><div class="section-heading"><p class="eyebrow">{{.T "faqKicker"}}</p><h2>{{.T "faqTitle"}}</h2></div><div class="faq">{{range .FAQs}}<details><summary>{{.Title}}</summary><p>{{.Text}}</p></details>{{end}}</div></section>
+<section class="section container faq-section"><div class="section-heading"><h2>{{.T "faqTitle"}}</h2></div><div class="faq">{{range .FAQs}}<details><summary>{{.Title}}</summary><p>{{.Text}}</p></details>{{end}}</div></section>
 
 <section class="container final-cta"><img src="/assets/goui-mark.svg" alt="" width="76" height="76" loading="lazy"><div><h2>{{.T "ctaTitle"}}</h2><p>{{.T "ctaText"}}</p></div><a class="button" href="{{.StartPath}}">{{.T "navStart"}} <span aria-hidden="true">→</span></a></section>
 {{end}}

@@ -26,9 +26,13 @@
   <meta name="twitter:description" content="{{.Description}}">
   <meta name="twitter:image" content="https://golang-gui.github.io/assets/demo-windows.png">
   <link rel="icon" type="image/svg+xml" href="/assets/goui-mark.svg">
-  <meta name="theme-color" content="#f5f8fa">
+  <meta name="theme-color" content="#f6f6f8" media="(prefers-color-scheme: light)" data-theme-color>
+  <meta name="theme-color" content="#101014" media="(prefers-color-scheme: dark)" data-theme-color>
   <link rel="stylesheet" href="/assets/site.css">
-  <script src="/assets/site.js" defer></script>
+  {{if or (eq .Kind "home") (eq .Kind "start")}}<script>
+(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.dataset.theme=t})();
+</script>{{end}}
+  {{if or (eq .Kind "home") (eq .Kind "start")}}<script src="/assets/site.js" defer></script>{{end}}
   {{if .StructuredData}}<script type="application/ld+json">{{.StructuredData}}</script>{{end}}
 </head>
 <body data-copy-label="{{.T "copy"}}" data-copied-label="{{.T "copied"}}" data-copy-failed="{{.T "copyFailed"}}">
@@ -40,24 +44,36 @@
         <a class="nav-secondary" href="{{.HomePath}}#features">{{.T "navFeatures"}}</a>
         <a class="nav-secondary" href="{{.HomePath}}#demo">{{.T "navDemo"}}</a>
         <a href="https://github.com/golang-gui/goui">GitHub <span aria-hidden="true">↗</span></a>
-        {{if .OtherPath}}<a class="language" href="{{.OtherPath}}" lang="{{if eq .Lang "en"}}zh-CN{{else}}en{{end}}">{{.OtherLabel}}</a>{{end}}
-        <a class="button button-small" href="{{.StartPath}}">{{.T "navStart"}}</a>
+        <div class="nav-actions">
+          {{if or (eq .Kind "home") (eq .Kind "start")}}<button type="button" class="theme-toggle" data-theme-toggle aria-label="{{.T "themeToggle"}}" title="{{.T "themeToggle"}}"><svg data-theme-icon="dark" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg><svg data-theme-icon="light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32 1.41-1.41"/></svg></button>{{end}}
+          {{if .OtherPath}}<div class="lang-switch">
+            <button type="button" class="lang-switch-btn" aria-haspopup="listbox" aria-label="{{.T "languageMenu"}}" title="{{.T "languageMenu"}}">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </button>
+            <ul class="lang-switch-list" role="listbox" aria-label="{{.T "languageMenu"}}">
+              <li><a class="current" aria-current="true" href="{{.HomePath}}">{{.T "langLabel"}}</a></li>
+              <li><a href="{{.OtherPath}}" lang="{{if eq .Lang "en"}}zh-CN{{else}}en{{end}}">{{.OtherLabel}}</a></li>
+            </ul>
+          </div>{{end}}
+          <a class="button button-small" href="{{.StartPath}}">{{.T "navStart"}}</a>
+        </div>
       </nav>
     </div>
   </header>
   <main id="main">
-    {{if eq .Kind "home"}}{{template "home" .}}{{else if eq .Kind "start"}}{{template "start" .}}{{else if eq .Kind "org"}}{{template "org" .}}{{else}}{{template "not-found" .}}{{end}}
+    {{if eq .Kind "home"}}{{template "home" .}}{{else if eq .Kind "start"}}{{template "start" .}}{{else}}{{template "not-found" .}}{{end}}
   </main>
   <footer class="site-footer">
     <div class="container footer-main">
-      <div><a class="footer-brand" href="/">golang-gui</a><p>{{.T "footerText"}}</p></div>
+      <div><a class="footer-brand" href="{{.HomePath}}">GOUI</a><p>{{.T "footerText"}}</p></div>
       <div class="footer-links"><a href="https://github.com/golang-gui/goui">GitHub</a><a href="https://pkg.go.dev/github.com/golang-gui/goui@{{.Version}}">API</a><a href="https://github.com/golang-gui/golang-gui.github.io">{{.T "footerSource"}}</a></div>
     </div>
+    {{if eq .Kind "home"}}<p class="container footer-dependencies">{{.T "dependenciesLead"}} <a href="https://github.com/golang-gui/nanovgo">nanovgo</a> {{.T "nanovgoRole"}} {{.T "dependenciesJoin"}} <a href="https://github.com/golang-gui/oksvg">oksvg</a> {{.T "oksvgRole"}}</p>{{end}}
     <div class="container footer-legal">
       <a href="https://github.com/golang-gui/goui/blob/{{.Version}}/LICENSE">{{.T "footerLicense"}}</a>
       <p><a href="https://go.dev/blog/gopher">{{.T "footerAttribution"}}</a></p>
     </div>
   </footer>
-  <div class="sr-only" role="status" aria-live="polite" id="copy-status"></div>
+  {{if or (eq .Kind "home") (eq .Kind "start")}}<div class="sr-only" role="status" aria-live="polite" id="copy-status"></div>{{end}}
 </body>
 </html>{{end}}

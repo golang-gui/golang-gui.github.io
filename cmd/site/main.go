@@ -1,4 +1,4 @@
-// site generates the public GitHub Pages site using only the Go standard library.
+// site optionally refreshes checked-in static pages using the Go standard library.
 package main
 
 import (
@@ -40,8 +40,9 @@ type Download struct {
 func (d Download) Size() string { return fmt.Sprintf("%.2f MiB", float64(d.Bytes)/(1024*1024)) }
 
 type Release struct {
-	Version, Published, URL, Checksums string
-	Downloads                          []Download
+	Version, Published, URL, Checksums  string
+	DemoVersion, DemoPublished, DemoURL string
+	Downloads                           []Download
 }
 
 type Screenshot struct {
@@ -69,12 +70,12 @@ func (p Page) T(key string) (string, error) {
 
 func main() {
 	root := flag.String("root", ".", "source directory")
-	out := flag.String("out", "_site", "output directory")
+	out := flag.String("out", ".", "output directory")
 	flag.Parse()
 	if err := build(*root, *out); err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("Generated 5 public pages and a 404 page in %s\n", *out)
+	fmt.Printf("Generated 4 public pages and a 404 page in %s\n", *out)
 }
 
 func readJSON(file string, value any) error {
@@ -111,7 +112,11 @@ func load(root string) ([]Page, error) {
 	if release.Version == "" || len(release.Downloads) != 3 {
 		return nil, fmt.Errorf("release requires a version and three verified assets")
 	}
-	example, err := os.ReadFile(filepath.Join(root, "content", "hello.go.txt"))
+	homeExample, err := os.ReadFile(filepath.Join(root, "content", "home.go.txt"))
+	if err != nil {
+		return nil, err
+	}
+	tutorialExample, err := os.ReadFile(filepath.Join(root, "content", "hello.go.txt"))
 	if err != nil {
 		return nil, err
 	}
@@ -134,16 +139,20 @@ func load(root string) ([]Page, error) {
 	}
 	var pages []Page
 	for _, locale := range []Locale{en, zh} {
-		home, start, otherHome, otherStart, otherLabel := "/goui/", "/goui/getting-started/", "/goui/zh-cn/", "/goui/zh-cn/getting-started/", "中文"
+		home, start, otherHome, otherStart, otherLabel := "/", "/getting-started/", "/zh-cn/", "/zh-cn/getting-started/", "中文"
 		if locale.Lang == "zh-CN" {
 			home, start, otherHome, otherStart, otherLabel = otherHome, otherStart, home, start, "English"
 		}
 		for _, kind := range []string{"home", "start"} {
+			example := homeExample
+			if kind == "start" {
+				example = tutorialExample
+			}
 			pagePath, otherPath := home, otherHome
-			enURL, zhURL := baseURL+"/goui/", baseURL+"/goui/zh-cn/"
+			enURL, zhURL := baseURL+"/", baseURL+"/zh-cn/"
 			if kind == "start" {
 				pagePath, otherPath = start, otherStart
-				enURL, zhURL = baseURL+"/goui/getting-started/", baseURL+"/goui/zh-cn/getting-started/"
+				enURL, zhURL = baseURL+"/getting-started/", baseURL+"/zh-cn/getting-started/"
 			}
 			p := Page{
 				Locale: locale, Release: release, Kind: kind, Path: pagePath,
@@ -157,7 +166,7 @@ func load(root string) ([]Page, error) {
 			}
 			data, err := json.Marshal(map[string]any{
 				"@context": "https://schema.org", "@type": "SoftwareSourceCode",
-				"@id": baseURL + "/goui/#project", "name": "GOUI", "url": baseURL + "/goui/",
+				"@id": baseURL + "/#project", "name": "GOUI", "url": baseURL + "/",
 				"description": locale.Text["homeDescription"], "codeRepository": projectURL,
 				"programmingLanguage": "Go", "runtimePlatform": "Windows, macOS, Linux / X11",
 				"version": release.Version, "license": "https://opensource.org/license/mit",
@@ -171,19 +180,10 @@ func load(root string) ([]Page, error) {
 			pages = append(pages, p)
 		}
 	}
-	org := Page{Locale: en, Release: release, Kind: "org", Path: "/", Canonical: baseURL + "/",
-		Title: "golang-gui — Native GUI tools for Go", Description: "Open-source Go desktop GUI projects: GOUI, nanovgo, and oksvg. Build native applications without a C/C++ build toolchain.",
-		HomePath: "/goui/", StartPath: "/goui/getting-started/"}
-	data, err := json.Marshal(map[string]any{"@context": "https://schema.org", "@type": "Organization",
-		"name": "golang-gui", "url": baseURL + "/", "sameAs": []string{"https://github.com/golang-gui"}})
-	if err != nil {
-		return nil, err
-	}
-	org.StructuredData = template.JS(data)
-	pages = append(pages, org)
-	notFound := org
+	notFound := pages[0]
 	notFound.Kind, notFound.Path, notFound.Canonical = "404", "/404.html", ""
-	notFound.Title, notFound.Description, notFound.StructuredData = "Page not found — golang-gui", "Return to GOUI, the native Go GUI framework.", ""
+	notFound.Title, notFound.Description, notFound.StructuredData = "Page not found — GOUI", "Return to GOUI, the native Go GUI framework.", ""
+	notFound.EnglishURL, notFound.ChineseURL, notFound.OtherPath, notFound.OtherLabel = "", "", "", ""
 	return append(pages, notFound), nil
 }
 
@@ -192,9 +192,7 @@ func build(root, out string) error {
 	if err != nil {
 		return err
 	}
-	templates, err := template.New("site").Funcs(template.FuncMap{
-		"ordinal": func(index int) int { return index + 1 },
-	}).ParseGlob(filepath.Join(root, "templates", "*.html"))
+	templates, err := template.New("site").ParseGlob(filepath.Join(root, "templates", "*.html"))
 	if err != nil {
 		return err
 	}
@@ -233,6 +231,17 @@ func build(root, out string) error {
 }
 
 func copyAssets(src, dst string) error {
+	source, err := filepath.Abs(src)
+	if err != nil {
+		return err
+	}
+	destination, err := filepath.Abs(dst)
+	if err != nil {
+		return err
+	}
+	if source == destination {
+		return nil
+	}
 	return filepath.WalkDir(src, func(path string, entry fs.DirEntry, err error) error {
 		if err != nil {
 			return err
@@ -279,10 +288,12 @@ func sitemap(w io.Writer, pages []Page) error {
 	if err := e.EncodeToken(root); err != nil {
 		return err
 	}
+	seen := make(map[string]bool)
 	for _, p := range pages {
-		if p.Kind == "404" {
+		if p.Kind == "404" || seen[p.Canonical] {
 			continue
 		}
+		seen[p.Canonical] = true
 		start := xml.StartElement{Name: xml.Name{Local: "url"}}
 		if err := e.EncodeToken(start); err != nil {
 			return err

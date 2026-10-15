@@ -8,11 +8,12 @@
 1. 使用站点所有者的 Google 账号打开 Search Console。
 2. 添加 URL 前缀资源 `https://golang-gui.github.io/`，不选择无法控制 DNS 的 github.io 域名资源。
 3. 选择 HTML 文件或 HTML meta 验证方式；由所有者提供真实文件／验证值。
-4. 将验证文件保留在生成后的站点根目录，或将 meta 加入模板；不要填入占位验证码。
+4. 将验证文件提交到仓库根目录并加入工作流的静态文件复制清单，或将 meta 加入对应 HTML；不要填入占位验证码。
 5. 验证后提交 `https://golang-gui.github.io/sitemap.xml`。
-6. 用 URL 检查工具查看 `/goui/` 与中英文教程，确认抓取、canonical 和索引状态。
+6. 用 URL 检查工具查看 `/`、`/zh-cn/` 与中英文教程，确认抓取、canonical 和索引状态。
 
-当前生成器没有预置验证值；提供真实验证材料后再增加对应文件复制或模板配置。
+当前没有预置验证值。使用 meta 验证时同时更新可选生成器的模板，避免后续刷新
+HTML 时丢失验证标签。
 
 ## Bing Webmaster Tools
 
