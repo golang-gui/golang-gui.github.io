@@ -1,4 +1,4 @@
-// site optionally refreshes checked-in static pages using the Go standard library.
+// site optionally refreshes checked-in static pages.
 package main
 
 import (
@@ -71,7 +71,16 @@ func (p Page) T(key string) (string, error) {
 func main() {
 	root := flag.String("root", ".", "source directory")
 	out := flag.String("out", ".", "output directory")
+	highlightCSSFlag := flag.Bool("highlight-css", false, "write the code highlighting stylesheet to stdout")
 	flag.Parse()
+	if *highlightCSSFlag {
+		css, err := highlightCSS()
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Print(css)
+		return
+	}
 	if err := build(*root, *out); err != nil {
 		log.Fatal(err)
 	}
@@ -192,7 +201,7 @@ func build(root, out string) error {
 	if err != nil {
 		return err
 	}
-	templates, err := template.New("site").ParseGlob(filepath.Join(root, "templates", "*.html"))
+	templates, err := template.New("site").Funcs(template.FuncMap{"code": code}).ParseGlob(filepath.Join(root, "templates", "*.html"))
 	if err != nil {
 		return err
 	}

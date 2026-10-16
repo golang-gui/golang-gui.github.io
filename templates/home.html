@@ -26,7 +26,7 @@
 </section>
 
 <section class="section section-ink">
-  <div class="container code-section"><div class="code-copy"><h2>{{.T "codeTitle"}}</h2><p>{{.T "codeLead"}}</p><div class="install-line"><code>go get github.com/golang-gui/goui@{{.Version}}</code></div><a class="text-link" href="{{.StartPath}}">{{.T "codeLink"}} <span aria-hidden="true">→</span></a></div><div class="code-block"><div class="code-toolbar"><span>main.go</span><button type="button" data-copy hidden>{{.T "copy"}}</button></div><pre><code>{{.Example}}</code></pre></div></div>
+  <div class="container code-section"><div class="code-copy"><h2>{{.T "codeTitle"}}</h2><p>{{.T "codeLead"}}</p><div class="install-line"><code>{{code "bash" (printf "go get github.com/golang-gui/goui@%s" .Version)}}</code></div><a class="text-link" href="{{.StartPath}}">{{.T "codeLink"}} <span aria-hidden="true">→</span></a></div><div class="code-block"><div class="code-toolbar"><span>main.go</span><button type="button" data-copy hidden>{{.T "copy"}}</button></div><pre><code>{{code "go" .Example}}</code></pre></div></div>
 </section>
 
 <section class="section section-white" id="demo">

@@ -90,18 +90,18 @@
 </section>
 
 <section class="section section-ink">
-  <div class="container code-section"><div class="code-copy"><h2>几行代码，一个窗口。</h2><p>窗口就是普通的 Go 值。这是一个完整应用——先运行起来，再按需生长。</p><div class="install-line"><code>go get github.com/golang-gui/goui@v0.1.1</code></div><a class="text-link" href="/zh-cn/getting-started/">查看完整入门教程 <span aria-hidden="true">→</span></a></div><div class="code-block"><div class="code-toolbar"><span>main.go</span><button type="button" data-copy hidden>复制</button></div><pre><code>package main
-
-import &#34;github.com/golang-gui/goui/ui&#34;
-
-func main() {
-	ui.Run(&#34;org.golang-gui.hello&#34;, func(app ui.App) ui.RootView {
-		return ui.Window(&#34;main&#34;).
-			Title(&#34;Hello World&#34;).
-			Content(ui.Label(&#34;Hello GOUI!&#34;))
-	})
-}
-</code></pre></div></div>
+  <div class="container code-section"><div class="code-copy"><h2>几行代码，一个窗口。</h2><p>窗口就是普通的 Go 值。这是一个完整应用——先运行起来，再按需生长。</p><div class="install-line"><code><span class="tok-nb">go</span><span class="tok-w"> </span><span class="tok-nt">get</span><span class="tok-w"> </span><span class="tok-nv">github.com/golang-gui/goui</span><span class="tok-p">@</span><span class="tok-nt">v0.1.1</span></code></div><a class="text-link" href="/zh-cn/getting-started/">查看完整入门教程 <span aria-hidden="true">→</span></a></div><div class="code-block"><div class="code-toolbar"><span>main.go</span><button type="button" data-copy hidden>复制</button></div><pre><code><span class="tok-kn">package</span><span class="tok-w"> </span><span class="tok-nx">main</span><span class="tok-w">
+</span><span class="tok-w">
+</span><span class="tok-kn">import</span><span class="tok-w"> </span><span class="tok-s">&#34;github.com/golang-gui/goui/ui&#34;</span><span class="tok-w">
+</span><span class="tok-w">
+</span><span class="tok-kd">func</span><span class="tok-w"> </span><span class="tok-nf">main</span><span class="tok-p">(</span><span class="tok-p">)</span><span class="tok-w"> </span><span class="tok-p">{</span><span class="tok-w">
+</span><span class="tok-w">	</span><span class="tok-nx">ui</span><span class="tok-p">.</span><span class="tok-nf">Run</span><span class="tok-p">(</span><span class="tok-s">&#34;org.golang-gui.hello&#34;</span><span class="tok-p">,</span><span class="tok-w"> </span><span class="tok-kd">func</span><span class="tok-p">(</span><span class="tok-nx">app</span><span class="tok-w"> </span><span class="tok-nx">ui</span><span class="tok-p">.</span><span class="tok-nc">App</span><span class="tok-p">)</span><span class="tok-w"> </span><span class="tok-nx">ui</span><span class="tok-p">.</span><span class="tok-nc">RootView</span><span class="tok-w"> </span><span class="tok-p">{</span><span class="tok-w">
+</span><span class="tok-w">		</span><span class="tok-k">return</span><span class="tok-w"> </span><span class="tok-nx">ui</span><span class="tok-p">.</span><span class="tok-nf">Window</span><span class="tok-p">(</span><span class="tok-s">&#34;main&#34;</span><span class="tok-p">)</span><span class="tok-p">.</span><span class="tok-w">
+</span><span class="tok-w">			</span><span class="tok-nf">Title</span><span class="tok-p">(</span><span class="tok-s">&#34;Hello World&#34;</span><span class="tok-p">)</span><span class="tok-p">.</span><span class="tok-w">
+</span><span class="tok-w">			</span><span class="tok-nf">Content</span><span class="tok-p">(</span><span class="tok-nx">ui</span><span class="tok-p">.</span><span class="tok-nf">Label</span><span class="tok-p">(</span><span class="tok-s">&#34;Hello GOUI!&#34;</span><span class="tok-p">)</span><span class="tok-p">)</span><span class="tok-w">
+</span><span class="tok-w">	</span><span class="tok-p">}</span><span class="tok-p">)</span><span class="tok-w">
+</span><span class="tok-p">}</span><span class="tok-w">
+</span></code></pre></div></div>
 </section>
 
 <section class="section section-white" id="demo">

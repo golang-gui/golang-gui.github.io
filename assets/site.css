@@ -1227,3 +1227,82 @@ html[data-theme="dark"] .theme-toggle [data-theme-icon="light"] {
     animation: none;
   }
 }
+
+/* ---- Code highlighting: chroma github-dark tokens, generated via
+   `go run ./cmd/site -highlight-css`; class prefix tok- under
+   .code-block and .install-line. ---- */
+/* Error */ .code-block .tok-err, .install-line .tok-err { color: #f85149 }
+/* Keyword */ .code-block .tok-k, .install-line .tok-k { color: #ff7b72 }
+/* KeywordConstant */ .code-block .tok-kc, .install-line .tok-kc { color: #79c0ff }
+/* KeywordDeclaration */ .code-block .tok-kd, .install-line .tok-kd { color: #ff7b72 }
+/* KeywordNamespace */ .code-block .tok-kn, .install-line .tok-kn { color: #ff7b72 }
+/* KeywordPseudo */ .code-block .tok-kp, .install-line .tok-kp { color: #79c0ff }
+/* KeywordReserved */ .code-block .tok-kr, .install-line .tok-kr { color: #ff7b72 }
+/* KeywordType */ .code-block .tok-kt, .install-line .tok-kt { color: #ff7b72 }
+/* NameClass */ .code-block .tok-nc, .install-line .tok-nc { color: #f0883e; font-weight: bold }
+/* NameConstant */ .code-block .tok-no, .install-line .tok-no { color: #79c0ff; font-weight: bold }
+/* NameDecorator */ .code-block .tok-nd, .install-line .tok-nd { color: #d2a8ff; font-weight: bold }
+/* NameEntity */ .code-block .tok-ni, .install-line .tok-ni { color: #ffa657 }
+/* NameException */ .code-block .tok-ne, .install-line .tok-ne { color: #f0883e; font-weight: bold }
+/* NameLabel */ .code-block .tok-nl, .install-line .tok-nl { color: #79c0ff; font-weight: bold }
+/* NameNamespace */ .code-block .tok-nn, .install-line .tok-nn { color: #ff7b72 }
+/* NameProperty */ .code-block .tok-py, .install-line .tok-py { color: #79c0ff }
+/* NameTag */ .code-block .tok-nt, .install-line .tok-nt { color: #7ee787 }
+/* NameVariable */ .code-block .tok-nv, .install-line .tok-nv { color: #79c0ff }
+/* NameVariableClass */ .code-block .tok-vc, .install-line .tok-vc { color: #79c0ff }
+/* NameVariableGlobal */ .code-block .tok-vg, .install-line .tok-vg { color: #79c0ff }
+/* NameVariableInstance */ .code-block .tok-vi, .install-line .tok-vi { color: #79c0ff }
+/* NameVariableMagic */ .code-block .tok-vm, .install-line .tok-vm { color: #79c0ff }
+/* NameFunction */ .code-block .tok-nf, .install-line .tok-nf { color: #d2a8ff; font-weight: bold }
+/* NameFunctionMagic */ .code-block .tok-fm, .install-line .tok-fm { color: #d2a8ff; font-weight: bold }
+/* Literal */ .code-block .tok-l, .install-line .tok-l { color: #a5d6ff }
+/* LiteralDate */ .code-block .tok-ld, .install-line .tok-ld { color: #79c0ff }
+/* LiteralString */ .code-block .tok-s, .install-line .tok-s { color: #a5d6ff }
+/* LiteralStringAffix */ .code-block .tok-sa, .install-line .tok-sa { color: #79c0ff }
+/* LiteralStringBacktick */ .code-block .tok-sb, .install-line .tok-sb { color: #a5d6ff }
+/* LiteralStringChar */ .code-block .tok-sc, .install-line .tok-sc { color: #a5d6ff }
+/* LiteralStringDelimiter */ .code-block .tok-dl, .install-line .tok-dl { color: #79c0ff }
+/* LiteralStringDoc */ .code-block .tok-sd, .install-line .tok-sd { color: #a5d6ff }
+/* LiteralStringDouble */ .code-block .tok-s2, .install-line .tok-s2 { color: #a5d6ff }
+/* LiteralStringEscape */ .code-block .tok-se, .install-line .tok-se { color: #79c0ff }
+/* LiteralStringHeredoc */ .code-block .tok-sh, .install-line .tok-sh { color: #79c0ff }
+/* LiteralStringInterpol */ .code-block .tok-si, .install-line .tok-si { color: #a5d6ff }
+/* LiteralStringOther */ .code-block .tok-sx, .install-line .tok-sx { color: #a5d6ff }
+/* LiteralStringRegex */ .code-block .tok-sr, .install-line .tok-sr { color: #79c0ff }
+/* LiteralStringSingle */ .code-block .tok-s1, .install-line .tok-s1 { color: #a5d6ff }
+/* LiteralStringSymbol */ .code-block .tok-ss, .install-line .tok-ss { color: #a5d6ff }
+/* LiteralNumber */ .code-block .tok-m, .install-line .tok-m { color: #a5d6ff }
+/* LiteralNumberBin */ .code-block .tok-mb, .install-line .tok-mb { color: #a5d6ff }
+/* LiteralNumberFloat */ .code-block .tok-mf, .install-line .tok-mf { color: #a5d6ff }
+/* LiteralNumberHex */ .code-block .tok-mh, .install-line .tok-mh { color: #a5d6ff }
+/* LiteralNumberInteger */ .code-block .tok-mi, .install-line .tok-mi { color: #a5d6ff }
+/* LiteralNumberIntegerLong */ .code-block .tok-il, .install-line .tok-il { color: #a5d6ff }
+/* LiteralNumberOct */ .code-block .tok-mo, .install-line .tok-mo { color: #a5d6ff }
+/* Operator */ .code-block .tok-o, .install-line .tok-o { color: #ff7b72; font-weight: bold }
+/* OperatorWord */ .code-block .tok-ow, .install-line .tok-ow { color: #ff7b72; font-weight: bold }
+/* OperatorReserved */ .code-block .tok-or, .install-line .tok-or { color: #ff7b72; font-weight: bold }
+/* Comment */ .code-block .tok-c, .install-line .tok-c { color: #8b949e; font-style: italic }
+/* CommentHashbang */ .code-block .tok-ch, .install-line .tok-ch { color: #8b949e; font-style: italic }
+/* CommentMultiline */ .code-block .tok-cm, .install-line .tok-cm { color: #8b949e; font-style: italic }
+/* CommentSingle */ .code-block .tok-c1, .install-line .tok-c1 { color: #8b949e; font-style: italic }
+/* CommentSpecial */ .code-block .tok-cs, .install-line .tok-cs { color: #8b949e; font-weight: bold; font-style: italic }
+/* CommentPreproc */ .code-block .tok-cp, .install-line .tok-cp { color: #8b949e; font-weight: bold; font-style: italic }
+/* CommentPreprocFile */ .code-block .tok-cpf, .install-line .tok-cpf { color: #8b949e; font-weight: bold; font-style: italic }
+/* GenericDeleted */ .code-block .tok-gd, .install-line .tok-gd { color: #ffa198; background-color: #490202 }
+/* GenericEmph */ .code-block .tok-ge, .install-line .tok-ge { font-style: italic }
+/* GenericError */ .code-block .tok-gr, .install-line .tok-gr { color: #ffa198 }
+/* GenericHeading */ .code-block .tok-gh, .install-line .tok-gh { color: #79c0ff; font-weight: bold }
+/* GenericInserted */ .code-block .tok-gi, .install-line .tok-gi { color: #56d364; background-color: #0f5323 }
+/* GenericOutput */ .code-block .tok-go, .install-line .tok-go { color: #8b949e }
+/* GenericPrompt */ .code-block .tok-gp, .install-line .tok-gp { color: #8b949e }
+/* GenericStrong */ .code-block .tok-gs, .install-line .tok-gs { font-weight: bold }
+/* GenericSubheading */ .code-block .tok-gu, .install-line .tok-gu { color: #79c0ff }
+/* GenericTraceback */ .code-block .tok-gt, .install-line .tok-gt { color: #ff7b72 }
+/* GenericUnderline */ .code-block .tok-gl, .install-line .tok-gl { text-decoration: underline }
+/* TextWhitespace */ .code-block .tok-w, .install-line .tok-w { color: #6e7681 }
+
+
+/* Manual additions: github-dark omits NameBuiltin and NameAttribute, which
+   the shell tokenizer uses for command words and flags. */
+.code-block .tok-nb, .install-line .tok-nb { color: #d2a8ff }
+.code-block .tok-na, .install-line .tok-na { color: #ffa657 }
