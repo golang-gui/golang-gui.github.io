@@ -3,7 +3,7 @@
   "OGLocale": "en_US",
   "Text": {
     "homeTitle": "GOUI — Lightweight Golang GUI Framework, No cgo",
-    "homeDescription": "Build lightweight, modern desktop apps in Go with GOUI. A native Golang GUI framework for Windows, macOS and Linux, without cgo, GCC or a browser engine.",
+    "homeDescription": "Build lightweight, modern desktop apps in Go with GOUI. A native Golang GUI framework for Windows, macOS and Linux, without cgo, GCC or a browser engine. Ships an AI skill, semantic UI snapshots for plain-text models, and an opt-in local automation protocol.",
     "startTitle": "Go GUI Tutorial — Build Your First GOUI Desktop App",
     "startDescription": "Create your first Go desktop GUI with GOUI v0.1.1. Install the module, build a counter app with CGO_ENABLED=0, and learn platform runtime requirements.",
     "skip": "Skip to content",
@@ -46,6 +46,18 @@
     "codeTitle": "A window in a few lines.",
     "codeLead": "A window is an ordinary Go value. This complete app opens a native window — run it, then grow from here.",
     "codeLink": "Follow the complete tutorial",
+    "aiTitle": "Made for AI-assisted development.",
+    "aiLead": "GOUI ships an official skill your coding assistant can install, publishes each running window as a plain-text semantic snapshot a language model can read, and can accept real input through an opt-in local automation protocol.",
+    "aiSkillTitle": "One prompt to install the skill",
+    "aiSkillText": "The official goui-app skill follows the Agent Skills format: send one install instruction to your coding tool and it gains GOUI application guidance. Whether a tool loads skills is decided by the tool itself.",
+    "aiSkillLink": "Install instructions",
+    "aiSnapshotTitle": "Semantics as plain text",
+    "aiSnapshotText": "Every window publishes a semantic snapshot — role, text, bounds, focus, supported actions — as JSON a plain-text model can read, so understanding the UI does not require vision.",
+    "aiSnapshotLink": "See it in the demo",
+    "aiAutomationTitle": "Automation through real input",
+    "aiAutomationText": "The opt-in local gui/dev server lets agents read snapshots, dispatch pointer and key events, and commit text through the normal input path. An explicit import plus GOUI_DEV_ADDR enables it, so it never ships in release binaries.",
+    "aiAutomationLink": "Protocol reference",
+    "aiPrompt": "Install the GOUI application development skill following https://github.com/golang-gui/goui/blob/main/skills/INSTALL.md.",
     "copy": "Copy",
     "copied": "Copied",
     "copyFailed": "Copy unavailable. Select the code and copy it manually.",
@@ -85,6 +97,8 @@
     "powershellText": "Use -H=windowsgui to build without a console window. Omit that flag while debugging if you want to see terminal output.",
     "stepFour": "Choose the next layer",
     "stepFourText": "ui is the declarative adapter; gui provides imperative widgets; widgets contains additional controls. Application behavior belongs to your app, not the view declarations.",
+    "stepFive": "Develop with an AI assistant",
+    "stepFiveText": "Install the official goui-app skill so your coding assistant knows GOUI application development. Send the following instruction to your tool; whether it loads skills is decided by the tool itself.",
     "linkAPI": "Browse the v0.1.1 API",
     "linkWidgets": "Additional controls",
     "linkCustom": "Custom widgets and views",
@@ -142,6 +156,10 @@
     {
       "Title": "Is everything in v0.1.1 stable?",
       "Text": "No. This release is intended for building small applications and gathering practical feedback. Public APIs continue to evolve; pin a version and review changes when upgrading."
+    },
+    {
+      "Title": "Can an AI agent read and operate my GOUI app?",
+      "Text": "Yes, with three building blocks: install the official goui-app skill for guidance, read the semantic snapshot as plain text for UI state, and optionally enable the local gui/dev server for snapshot, event and text APIs through real input dispatch. Automation stays in development builds and does not ship to users."
     }
   ]
 }

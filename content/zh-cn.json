@@ -3,7 +3,7 @@
   "OGLocale": "zh_CN",
   "Text": {
     "homeTitle": "GOUI — 轻量现代的 Go GUI 框架，无需 cgo 与 GCC",
-    "homeDescription": "使用 GOUI 构建轻量、现代的 Go 桌面应用。支持 Windows、macOS 和 Linux 的原生 Golang GUI 框架，无需 cgo、GCC 或浏览器引擎。",
+    "homeDescription": "使用 GOUI 构建轻量、现代的 Go 桌面应用。支持 Windows、macOS 和 Linux 的原生 Golang GUI 框架，无需 cgo、GCC 或浏览器引擎。提供 AI Skill、面向纯文本模型的语义界面快照，以及可选的本地自动化协议。",
     "startTitle": "Go GUI 入门教程 — 编写第一个 GOUI 桌面应用",
     "startDescription": "从 GOUI v0.1.1 开始开发 Go 桌面 GUI：安装模块、编写计数器、使用 CGO_ENABLED=0 构建，并了解三平台运行条件。",
     "skip": "跳到正文",
@@ -46,6 +46,18 @@
     "codeTitle": "几行代码，一个窗口。",
     "codeLead": "窗口就是普通的 Go 值。这是一个完整应用——先运行起来，再按需生长。",
     "codeLink": "查看完整入门教程",
+    "aiTitle": "为 AI 辅助开发而准备。",
+    "aiLead": "GOUI 提供官方 Skill 供编码助手安装，把运行中的窗口发布为纯文本模型可读的语义快照，并可通过可选的本地自动化协议接收真实输入。",
+    "aiSkillTitle": "一句话安装 Skill",
+    "aiSkillText": "官方 goui-app 技能遵循 Agent Skills 格式：向编码工具发送一条安装指令，即可获得 GOUI 应用开发指引。工具是否加载 Skill，由工具自身决定。",
+    "aiSkillLink": "安装说明",
+    "aiSnapshotTitle": "纯文本的语义信息",
+    "aiSnapshotText": "每个窗口都发布语义快照——角色、文本、边界、焦点、支持的操作——以纯文本模型可读的 JSON 呈现，理解界面不依赖视觉能力。",
+    "aiSnapshotLink": "在 Demo 中查看",
+    "aiAutomationTitle": "走真实输入的自动化",
+    "aiAutomationText": "可选的本地 gui/dev 服务让智能体读取快照、分发指针与按键事件、按正常输入路径提交文本。它需要显式 import 和 GOUI_DEV_ADDR 才会启用，不会进入发布二进制。",
+    "aiAutomationLink": "协议说明",
+    "aiPrompt": "请按照 https://github.com/golang-gui/goui/blob/main/skills/INSTALL.md 的说明，安装 GOUI 应用开发 Skill。",
     "copy": "复制",
     "copied": "已复制",
     "copyFailed": "无法自动复制，请选中代码手动复制。",
@@ -85,6 +97,8 @@
     "powershellText": "使用 -H=windowsgui 构建无控制台窗口的应用；调试时可以去掉这个参数以查看终端输出。",
     "stepFour": "选择需要的层",
     "stepFourText": "ui 是声明式适配层，gui 提供命令式控件，widgets 提供更多用途控件。业务行为由应用管理，不放入 View 声明本身。",
+    "stepFive": "用 AI 助手开发",
+    "stepFiveText": "安装官方 goui-app 技能，让编码助手掌握 GOUI 应用开发。把下面的指令发送给你的工具；是否加载 Skill 由工具自身决定。",
     "linkAPI": "查看 v0.1.1 API",
     "linkWidgets": "更多控件",
     "linkCustom": "自定义 Widget 与 View",
@@ -142,6 +156,10 @@
     {
       "Title": "v0.1.1 的全部 API 都稳定了吗？",
       "Text": "还没有。首版本用于开发小型应用并获得实践反馈，公共 API 会继续演进。建议固定版本，升级时查看变更。"
+    },
+    {
+      "Title": "AI 智能体能读取并操作我的 GOUI 应用吗？",
+      "Text": "可以，三部分配合：安装官方 goui-app Skill 获得开发指引；以纯文本读取语义快照了解界面状态；可选启用本地 gui/dev 服务，通过快照、事件和文本接口走真实输入分发完成操作。自动化只存在于开发构建，不会随应用发布。"
     }
   ]
 }

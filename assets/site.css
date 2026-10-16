@@ -540,6 +540,12 @@ html[data-theme="dark"] .theme-toggle [data-theme-icon="light"] {
   font-size: 0.94rem;
   margin-bottom: 0;
 }
+.ai-prompt {
+  margin-bottom: 44px;
+}
+.ai-prompt code {
+  font-size: 0.86rem;
+}
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

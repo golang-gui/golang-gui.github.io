@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GOUI — 轻量现代的 Go GUI 框架，无需 cgo 与 GCC</title>
-  <meta name="description" content="使用 GOUI 构建轻量、现代的 Go 桌面应用。支持 Windows、macOS 和 Linux 的原生 Golang GUI 框架，无需 cgo、GCC 或浏览器引擎。">
+  <meta name="description" content="使用 GOUI 构建轻量、现代的 Go 桌面应用。支持 Windows、macOS 和 Linux 的原生 Golang GUI 框架，无需 cgo、GCC 或浏览器引擎。提供 AI Skill、面向纯文本模型的语义界面快照，以及可选的本地自动化协议。">
   <link rel="canonical" href="https://golang-gui.github.io/zh-cn/">
   
   <link rel="alternate" hreflang="en" href="https://golang-gui.github.io/">
@@ -14,7 +14,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="GOUI">
   <meta property="og:title" content="GOUI — 轻量现代的 Go GUI 框架，无需 cgo 与 GCC">
-  <meta property="og:description" content="使用 GOUI 构建轻量、现代的 Go 桌面应用。支持 Windows、macOS 和 Linux 的原生 Golang GUI 框架，无需 cgo、GCC 或浏览器引擎。">
+  <meta property="og:description" content="使用 GOUI 构建轻量、现代的 Go 桌面应用。支持 Windows、macOS 和 Linux 的原生 Golang GUI 框架，无需 cgo、GCC 或浏览器引擎。提供 AI Skill、面向纯文本模型的语义界面快照，以及可选的本地自动化协议。">
   <meta property="og:url" content="https://golang-gui.github.io/zh-cn/">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:image" content="https://golang-gui.github.io/assets/demo-windows.png">
@@ -23,7 +23,7 @@
   <meta property="og:image:alt" content="GOUI desktop demo on Windows">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="GOUI — 轻量现代的 Go GUI 框架，无需 cgo 与 GCC">
-  <meta name="twitter:description" content="使用 GOUI 构建轻量、现代的 Go 桌面应用。支持 Windows、macOS 和 Linux 的原生 Golang GUI 框架，无需 cgo、GCC 或浏览器引擎。">
+  <meta name="twitter:description" content="使用 GOUI 构建轻量、现代的 Go 桌面应用。支持 Windows、macOS 和 Linux 的原生 Golang GUI 框架，无需 cgo、GCC 或浏览器引擎。提供 AI Skill、面向纯文本模型的语义界面快照，以及可选的本地自动化协议。">
   <meta name="twitter:image" content="https://golang-gui.github.io/assets/demo-windows.png">
   <link rel="icon" type="image/svg+xml" href="/assets/goui-mark.svg">
   <meta name="theme-color" content="#f6f6f8" media="(prefers-color-scheme: light)" data-theme-color>
@@ -33,7 +33,7 @@
 (function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.dataset.theme=t})();
 </script>
   <script src="/assets/site.js" defer></script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@id":"https://golang-gui.github.io/#project","@type":"SoftwareSourceCode","author":{"@type":"Organization","name":"golang-gui","url":"https://golang-gui.github.io/"},"codeRepository":"https://github.com/golang-gui/goui","description":"使用 GOUI 构建轻量、现代的 Go 桌面应用。支持 Windows、macOS 和 Linux 的原生 Golang GUI 框架，无需 cgo、GCC 或浏览器引擎。","license":"https://opensource.org/license/mit","name":"GOUI","programmingLanguage":"Go","runtimePlatform":"Windows, macOS, Linux / X11","url":"https://golang-gui.github.io/","version":"v0.1.1"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@id":"https://golang-gui.github.io/#project","@type":"SoftwareSourceCode","author":{"@type":"Organization","name":"golang-gui","url":"https://golang-gui.github.io/"},"codeRepository":"https://github.com/golang-gui/goui","description":"使用 GOUI 构建轻量、现代的 Go 桌面应用。支持 Windows、macOS 和 Linux 的原生 Golang GUI 框架，无需 cgo、GCC 或浏览器引擎。提供 AI Skill、面向纯文本模型的语义界面快照，以及可选的本地自动化协议。","license":"https://opensource.org/license/mit","name":"GOUI","programmingLanguage":"Go","runtimePlatform":"Windows, macOS, Linux / X11","url":"https://golang-gui.github.io/","version":"v0.1.1"}</script>
 </head>
 <body data-copy-label="复制" data-copied-label="已复制" data-copy-failed="无法自动复制，请选中代码手动复制。">
   <a class="skip-link" href="#main">跳到正文</a>
@@ -104,6 +104,19 @@
 </span></code></pre></div></div>
 </section>
 
+<section class="section container" id="ai">
+  <div class="section-heading"><h2>为 AI 辅助开发而准备。</h2><p>GOUI 提供官方 Skill 供编码助手安装，把运行中的窗口发布为纯文本模型可读的语义快照，并可通过可选的本地自动化协议接收真实输入。</p></div>
+  <div class="code-block ai-prompt">
+    <div class="code-toolbar"><span>Prompt</span><button type="button" data-copy hidden>复制</button></div>
+    <pre><code>请按照 https://github.com/golang-gui/goui/blob/main/skills/INSTALL.md 的说明，安装 GOUI 应用开发 Skill。</code></pre>
+  </div>
+  <div class="reasons">
+    <article><h3>一句话安装 Skill</h3><p>官方 goui-app 技能遵循 Agent Skills 格式：向编码工具发送一条安装指令，即可获得 GOUI 应用开发指引。工具是否加载 Skill，由工具自身决定。 <a class="text-link" href="https://github.com/golang-gui/goui/blob/v0.1.1/skills/INSTALL.md">安装说明 <span aria-hidden="true">↗</span></a></p></article>
+    <article><h3>纯文本的语义信息</h3><p>每个窗口都发布语义快照——角色、文本、边界、焦点、支持的操作——以纯文本模型可读的 JSON 呈现，理解界面不依赖视觉能力。 <a class="text-link" href="#demo">在 Demo 中查看 <span aria-hidden="true">→</span></a></p></article>
+    <article><h3>走真实输入的自动化</h3><p>可选的本地 gui/dev 服务让智能体读取快照、分发指针与按键事件、按正常输入路径提交文本。它需要显式 import 和 GOUI_DEV_ADDR 才会启用，不会进入发布二进制。 <a class="text-link" href="https://github.com/golang-gui/goui/blob/v0.1.1/gui/dev/doc.go">协议说明 <span aria-hidden="true">↗</span></a></p></article>
+  </div>
+</section>
+
 <section class="section section-white" id="demo">
   <div class="container">
     <div class="section-heading"><h2>体验Demo</h2><p>Demo 集中展示文本编辑、数据视图、可拖出标签、覆盖层、绘图和系统集成。可以切换亮暗模式、主题色和八种界面语言。</p></div>
@@ -124,7 +137,7 @@
   <p class="container limitations">v0.1.1 是首版本，公共 API 仍在演进。后续继续推进触摸、更多平台与窗口系统、用途控件，以及有实测依据的性能优化。</p>
 </section>
 
-<section class="section container faq-section"><div class="section-heading"><h2>几个值得了解的问题。</h2></div><div class="faq"><details><summary>GOUI 是 Web 套壳吗？</summary><p>不是。GOUI 通过原生绘图后端绘制控件，并使用原生文字排版，不嵌入浏览器引擎。</p></details><details><summary>需要 GCC 或 cgo 吗？</summary><p>构建应用不需要 C/C&#43;&#43; 编译器。GOUI 支持 CGO_ENABLED=0，在运行时绑定原生库；运行库要求仍然存在。</p></details><details><summary>可以交叉编译吗？</summary><p>支持的目标可以用 Go 工具链无 cgo 构建。打包、签名和真机验证是独立步骤；编译通过不代表原生行为已经验证。</p></details><details><summary>v0.1.1 的全部 API 都稳定了吗？</summary><p>还没有。首版本用于开发小型应用并获得实践反馈，公共 API 会继续演进。建议固定版本，升级时查看变更。</p></details></div></section>
+<section class="section container faq-section"><div class="section-heading"><h2>几个值得了解的问题。</h2></div><div class="faq"><details><summary>GOUI 是 Web 套壳吗？</summary><p>不是。GOUI 通过原生绘图后端绘制控件，并使用原生文字排版，不嵌入浏览器引擎。</p></details><details><summary>需要 GCC 或 cgo 吗？</summary><p>构建应用不需要 C/C&#43;&#43; 编译器。GOUI 支持 CGO_ENABLED=0，在运行时绑定原生库；运行库要求仍然存在。</p></details><details><summary>可以交叉编译吗？</summary><p>支持的目标可以用 Go 工具链无 cgo 构建。打包、签名和真机验证是独立步骤；编译通过不代表原生行为已经验证。</p></details><details><summary>v0.1.1 的全部 API 都稳定了吗？</summary><p>还没有。首版本用于开发小型应用并获得实践反馈，公共 API 会继续演进。建议固定版本，升级时查看变更。</p></details><details><summary>AI 智能体能读取并操作我的 GOUI 应用吗？</summary><p>可以，三部分配合：安装官方 goui-app Skill 获得开发指引；以纯文本读取语义快照了解界面状态；可选启用本地 gui/dev 服务，通过快照、事件和文本接口走真实输入分发完成操作。自动化只存在于开发构建，不会随应用发布。</p></details></div></section>
 
 <section class="container final-cta"><img src="/assets/goui-mark.svg" alt="" width="76" height="76" loading="lazy"><div><h2>让应用，继续用 Go。</h2><p>从一个小窗口开始，再使用应用真正需要的层和控件。</p></div><a class="button" href="/zh-cn/getting-started/">快速开始 <span aria-hidden="true">→</span></a></section>
 
