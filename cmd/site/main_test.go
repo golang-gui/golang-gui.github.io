@@ -101,7 +101,7 @@ func TestBuild(t *testing.T) {
 				}
 			}
 			if p.Kind == "home" || p.Kind == "start" {
-				if !strings.Contains(body, "github.com/golang-gui/goui@v0.1.1") || strings.Contains(body, "goui@latest") {
+				if !strings.Contains(body, "github.com/golang-gui/goui@"+p.Version) || strings.Contains(body, "goui@latest") {
 					t.Fatal("tutorial must pin the released version")
 				}
 				for _, want := range []string{

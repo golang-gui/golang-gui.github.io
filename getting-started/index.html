@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Go GUI Tutorial — Build Your First GOUI Desktop App</title>
-  <meta name="description" content="Create your first Go desktop GUI with GOUI v0.1.1. Install the module, build a counter app with CGO_ENABLED=0, and learn platform runtime requirements.">
+  <meta name="description" content="Create your first Go desktop GUI with GOUI v0.3.0. Install the module, build a counter app with CGO_ENABLED=0, and learn platform runtime requirements.">
   <link rel="canonical" href="https://golang-gui.github.io/getting-started/">
   
   <link rel="alternate" hreflang="en" href="https://golang-gui.github.io/getting-started/">
@@ -14,7 +14,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="GOUI">
   <meta property="og:title" content="Go GUI Tutorial — Build Your First GOUI Desktop App">
-  <meta property="og:description" content="Create your first Go desktop GUI with GOUI v0.1.1. Install the module, build a counter app with CGO_ENABLED=0, and learn platform runtime requirements.">
+  <meta property="og:description" content="Create your first Go desktop GUI with GOUI v0.3.0. Install the module, build a counter app with CGO_ENABLED=0, and learn platform runtime requirements.">
   <meta property="og:url" content="https://golang-gui.github.io/getting-started/">
   <meta property="og:locale" content="en_US">
   <meta property="og:image" content="https://golang-gui.github.io/assets/demo-windows.png">
@@ -23,7 +23,7 @@
   <meta property="og:image:alt" content="GOUI desktop demo on Windows">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Go GUI Tutorial — Build Your First GOUI Desktop App">
-  <meta name="twitter:description" content="Create your first Go desktop GUI with GOUI v0.1.1. Install the module, build a counter app with CGO_ENABLED=0, and learn platform runtime requirements.">
+  <meta name="twitter:description" content="Create your first Go desktop GUI with GOUI v0.3.0. Install the module, build a counter app with CGO_ENABLED=0, and learn platform runtime requirements.">
   <meta name="twitter:image" content="https://golang-gui.github.io/assets/demo-windows.png">
   <link rel="icon" type="image/svg+xml" href="/assets/goui-mark.svg">
   <meta name="theme-color" content="#f6f6f8" media="(prefers-color-scheme: light)" data-theme-color>
@@ -33,7 +33,7 @@
 (function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.dataset.theme=t})();
 </script>
   <script src="/assets/site.js" defer></script>
-  <script type="application/ld+json">{"@context":"https://schema.org","@id":"https://golang-gui.github.io/#project","@type":"SoftwareSourceCode","author":{"@type":"Organization","name":"golang-gui","url":"https://golang-gui.github.io/"},"codeRepository":"https://github.com/golang-gui/goui","description":"Build lightweight, modern desktop apps in Go with GOUI. A native Golang GUI framework for Windows, macOS and Linux, without cgo, GCC or a browser engine. Ships an AI skill, semantic UI snapshots for plain-text models, and an opt-in local automation protocol.","license":"https://opensource.org/license/mit","name":"GOUI","programmingLanguage":"Go","runtimePlatform":"Windows, macOS, Linux / X11","url":"https://golang-gui.github.io/","version":"v0.1.1"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@id":"https://golang-gui.github.io/#project","@type":"SoftwareSourceCode","author":{"@type":"Organization","name":"golang-gui","url":"https://golang-gui.github.io/"},"codeRepository":"https://github.com/golang-gui/goui","description":"Build lightweight, modern desktop apps in Go with GOUI. A native Golang GUI framework for Windows, macOS and Linux, without cgo, GCC or a browser engine. Ships an AI skill, semantic UI snapshots for plain-text models, and an opt-in local automation protocol.","license":"https://opensource.org/license/mit","name":"GOUI","programmingLanguage":"Go","runtimePlatform":"Windows, macOS, Linux / X11","url":"https://golang-gui.github.io/","version":"v0.3.0"}</script>
 </head>
 <body data-copy-label="Copy" data-copied-label="Copied" data-copy-failed="Copy unavailable. Select the code and copy it manually.">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -63,13 +63,13 @@
   <main id="main">
     
 <article class="container tutorial">
-  <header class="tutorial-header"><h1>A Go GUI, in a few steps.</h1><p class="hero-lead">Build a small counter application with GOUI v0.1.1. The same interface code targets Windows, macOS and Linux; no C/C&#43;&#43; compiler is needed.</p></header>
+  <header class="tutorial-header"><h1>A Go GUI, in a few steps.</h1><p class="hero-lead">Build a small counter application with GOUI v0.3.0. The same interface code targets Windows, macOS and Linux; no C/C&#43;&#43; compiler is needed.</p></header>
   <aside class="notice"><h2>Before you begin</h2><p>Install Go 1.24 or newer and use a supported desktop environment. The published demo targets Windows x64, macOS Apple Silicon and Linux x64/X11. Linux also needs the native runtime libraries described below.</p></aside>
-  <section class="tutorial-step" id="install"><span class="step-number">01</span><h2>Create a module</h2><p>Pin the first release so this tutorial does not silently move to a newer API.</p><div class="code-block"><div class="code-toolbar"><span>Terminal</span><button type="button" data-copy hidden>Copy</button></div><pre><code><span class="tok-nb">mkdir</span><span class="tok-w"> </span>hello-goui<span class="tok-w">
+  <section class="tutorial-step" id="install"><span class="step-number">01</span><h2>Create a module</h2><p>Pin the release so this tutorial does not silently move to a newer API.</p><div class="code-block"><div class="code-toolbar"><span>Terminal</span><button type="button" data-copy hidden>Copy</button></div><pre><code><span class="tok-nb">mkdir</span><span class="tok-w"> </span>hello-goui<span class="tok-w">
 </span><span class="tok-nb">cd</span><span class="tok-w"> </span>hello-goui<span class="tok-w">
 </span><span class="tok-nb">go</span><span class="tok-w"> </span><span class="tok-nt">mod</span><span class="tok-w"> </span><span class="tok-nt">init</span><span class="tok-w"> </span><span class="tok-nv">example.com/hello-goui</span><span class="tok-w">
-</span><span class="tok-nb">go</span><span class="tok-w"> </span><span class="tok-nt">get</span><span class="tok-w"> </span><span class="tok-nv">github.com/golang-gui/goui</span><span class="tok-p">@</span><span class="tok-nt">v0.1.1</span></code></pre></div></section>
-  <section class="tutorial-step" id="ai"><span class="step-number">02</span><h2>Develop with an AI assistant</h2><p>Install the official goui-app skill so your coding assistant knows GOUI application development. Send the following instruction to your tool; whether it loads skills is decided by the tool itself. <a class="text-link" href="https://github.com/golang-gui/goui/blob/v0.1.1/skills/INSTALL.md">Install instructions <span aria-hidden="true">↗</span></a></p><div class="code-block"><div class="code-toolbar"><span>Prompt</span><button type="button" data-copy hidden>Copy</button></div><pre><code>Install the GOUI application development skill following https://github.com/golang-gui/goui/blob/main/skills/INSTALL.md.</code></pre></div></section>
+</span><span class="tok-nb">go</span><span class="tok-w"> </span><span class="tok-nt">get</span><span class="tok-w"> </span><span class="tok-nv">github.com/golang-gui/goui</span><span class="tok-p">@</span><span class="tok-nt">v0.3.0</span></code></pre></div></section>
+  <section class="tutorial-step" id="ai"><span class="step-number">02</span><h2>Develop with an AI assistant</h2><p>Install the official goui-app skill so your coding assistant knows GOUI application development. Send the following instruction to your tool; whether it loads skills is decided by the tool itself. <a class="text-link" href="https://github.com/golang-gui/goui/blob/v0.3.0/skills/INSTALL.md">Install instructions <span aria-hidden="true">↗</span></a></p><div class="code-block"><div class="code-toolbar"><span>Prompt</span><button type="button" data-copy hidden>Copy</button></div><pre><code>Install the GOUI application development skill following https://github.com/golang-gui/goui/blob/main/skills/INSTALL.md.</code></pre></div></section>
   <section class="tutorial-step" id="code"><span class="step-number">03</span><h2>Write your interface</h2><p>Save the following as main.go. The Modern stylesheet follows system settings; clicking the button updates the state and rebuilds the view.</p><div class="code-block"><div class="code-toolbar"><span>main.go</span><button type="button" data-copy hidden>Copy</button></div><pre><code><span class="tok-kn">package</span><span class="tok-w"> </span><span class="tok-nx">main</span><span class="tok-w">
 </span><span class="tok-w">
 </span><span class="tok-kn">import</span><span class="tok-w"> </span><span class="tok-p">(</span><span class="tok-w">
@@ -108,21 +108,21 @@
 </span><span class="tok-nb">./hello-goui</span></code></pre></div><h3>Windows PowerShell</h3><p>Use -H=windowsgui to build without a console window. Omit that flag while debugging if you want to see terminal output.</p><div class="code-block"><div class="code-toolbar"><span>PowerShell</span><button type="button" data-copy hidden>Copy</button></div><pre><code><span class="tok-nv">$env:CGO_ENABLED</span><span class="tok-p">=</span><span class="tok-s1">&#39;0&#39;</span>
 <span class="tok-n">go</span> <span class="tok-n">build</span> <span class="tok-n">-trimpath</span> <span class="tok-n">-ldflags</span><span class="tok-p">=</span><span class="tok-s2">&#34;</span><span class="tok-s2">-s -w -H=windowsgui</span><span class="tok-s2">&#34;</span> <span class="tok-n">-o</span> <span class="tok-nb">hello-goui</span><span class="tok-p">.</span><span class="tok-py">exe</span> <span class="tok-p">.</span>
 <span class="tok-p">.</span><span class="tok-p">\</span><span class="tok-nb">hello-goui</span><span class="tok-p">.</span><span class="tok-n">exe</span></code></pre></div></section>
-  <section class="tutorial-step" id="next"><span class="step-number">05</span><h2>Choose the next layer</h2><p>ui is the declarative adapter; gui provides imperative widgets; widgets contains additional controls. Application behavior belongs to your app, not the view declarations.</p><ul class="resource-links"><li><a href="https://pkg.go.dev/github.com/golang-gui/goui@v0.1.1">Browse the v0.1.1 API <span aria-hidden="true">↗</span></a></li><li><a href="https://github.com/golang-gui/goui/tree/v0.1.1/widgets">Additional controls <span aria-hidden="true">↗</span></a></li><li><a href="https://github.com/golang-gui/goui/blob/v0.1.1/doc/CustomWidgetView.md">Custom widgets and views <span aria-hidden="true">↗</span></a></li><li><a href="https://github.com/golang-gui/goui/blob/v0.1.1/skills/INSTALL.md">Develop with an AI assistant <span aria-hidden="true">↗</span></a></li></ul></section>
-  <section class="tutorial-step"><h2>Building is not always packaging.</h2><p>An ordinary go build is enough to create the executable. The optional cmd/goui tool prepares Windows icon/version resources, macOS .app metadata and icons, and Linux desktop/icon resources from goui.toml. It does not remove system runtime requirements.</p><a class="text-link" href="https://github.com/golang-gui/goui/blob/v0.1.1/cmd/goui/README.md">Read the build and package guide <span aria-hidden="true">↗</span></a></section>
+  <section class="tutorial-step" id="next"><span class="step-number">05</span><h2>Choose the next layer</h2><p>ui is the declarative adapter; gui provides imperative widgets; widgets contains additional controls. Application behavior belongs to your app, not the view declarations.</p><ul class="resource-links"><li><a href="https://pkg.go.dev/github.com/golang-gui/goui@v0.3.0">Browse the v0.3.0 API <span aria-hidden="true">↗</span></a></li><li><a href="https://github.com/golang-gui/goui/tree/v0.3.0/widgets">Additional controls <span aria-hidden="true">↗</span></a></li><li><a href="https://github.com/golang-gui/goui/blob/v0.3.0/doc/CustomWidgetView.md">Custom widgets and views <span aria-hidden="true">↗</span></a></li><li><a href="https://github.com/golang-gui/goui/blob/v0.3.0/skills/INSTALL.md">Develop with an AI assistant <span aria-hidden="true">↗</span></a></li></ul></section>
+  <section class="tutorial-step"><h2>Building is not always packaging.</h2><p>An ordinary go build is enough to create the executable. The optional cmd/goui tool prepares Windows icon/version resources, macOS .app metadata and icons, and Linux desktop/icon resources from goui.toml. It does not remove system runtime requirements.</p><a class="text-link" href="https://github.com/golang-gui/goui/blob/v0.3.0/cmd/goui/README.md">Read the build and package guide <span aria-hidden="true">↗</span></a></section>
   <section class="tutorial-step" id="requirements"><h2>Runtime requirements</h2><div class="platform-list"><article><h3>Windows</h3><p>Windows x64 · Win32 windows · DirectWrite text · Direct2D, OpenGL or Software drawing.</p></article><article><h3>macOS</h3><p>macOS Apple Silicon · AppKit windows · Core Text · OpenGL or Software drawing. Signing and notarization remain application distribution steps.</p></article><article><h3>Linux</h3><p>Linux x64 · X11 · Pango/Cairo text · OpenGL or Software drawing. Needs native X11, GL, GLib, Fontconfig, Pango/Cairo and GTK runtime libraries. Wayland sessions require XWayland; behavior must be checked on the target desktop.</p></article></div></section>
-  <aside class="notice"><h2>You&#39;re ready to build something small.</h2><p>Try the demo, browse the examples, then implement the application that matters to you. v0.1.1 is a starting point, with APIs still evolving.</p><a class="button button-small" href="/#demo">Try the demo</a></aside>
+  <aside class="notice"><h2>You&#39;re ready to build something small.</h2><p>Try the demo, browse the examples, then implement the application that matters to you. v0.3.0 is a starting point, with APIs still evolving.</p><a class="button button-small" href="/#demo">Try the demo</a></aside>
 </article>
 
   </main>
   <footer class="site-footer">
     <div class="container footer-main">
       <div><a class="footer-brand" href="/">GOUI</a><p>Open-source native desktop tools for Go.</p></div>
-      <div class="footer-links"><a href="https://github.com/golang-gui/goui">GitHub</a><a href="https://pkg.go.dev/github.com/golang-gui/goui@v0.1.1">API</a><a href="https://github.com/golang-gui/golang-gui.github.io">Website source</a></div>
+      <div class="footer-links"><a href="https://github.com/golang-gui/goui">GitHub</a><a href="https://pkg.go.dev/github.com/golang-gui/goui@v0.3.0">API</a><a href="https://github.com/golang-gui/golang-gui.github.io">Website source</a></div>
     </div>
     
     <div class="container footer-legal">
-      <a href="https://github.com/golang-gui/goui/blob/v0.1.1/LICENSE">MIT source license</a>
+      <a href="https://github.com/golang-gui/goui/blob/v0.3.0/LICENSE">MIT source license</a>
       <p><a href="https://go.dev/blog/gopher">GOUI artwork adapts the Go gopher by Renee French (CC BY 4.0).</a></p>
     </div>
   </footer>
