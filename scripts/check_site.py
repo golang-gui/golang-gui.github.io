@@ -181,9 +181,19 @@ def validate():
     check((ROOT / "robots.txt").read_text() ==
           f"User-agent: *\nAllow: /\n\nSitemap: {BASE}/sitemap.xml\n", "Incorrect robots.txt")
     check((ROOT / ".nojekyll").is_file(), "Missing .nojekyll")
+    google_files = sorted(ROOT.glob("google*.html"))
+    check(bool(google_files), "Missing Google verification file")
+    for path in google_files:
+        check(path.read_text(encoding="utf-8").strip() ==
+              f"google-site-verification: {path.name}",
+              f"{path.name}: invalid Google verification response")
+    bing = ET.parse(ROOT / "BingSiteAuth.xml").getroot()
+    check(bing.tag == "users" and bool(bing.findall("user")) and
+          all((user.text or "").strip() for user in bing.findall("user")),
+          "BingSiteAuth.xml: invalid Bing verification response")
     if errors:
         raise ValueError("\n".join(errors))
-    print("Validated 5 checked-in static HTML pages, links, images, metadata and sitemap.")
+    print("Validated 5 checked-in static HTML pages, links, images, metadata, sitemap and verification files.")
 
 
 if __name__ == "__main__":
