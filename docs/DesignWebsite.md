@@ -38,9 +38,10 @@ Go 标准库生成器保留为可选的多语言维护工具：模板和翻译�
 （含根目录）和教程按需加载原生脚本，仅增强截图轮播和复制代码。禁用脚本后仍能
 阅读完整内容，三平台截图逐张展示，FAQ 使用原生 details／summary。
 
-静态 HTML 文件直接加入版本控制。main 推送触发 GitHub Actions；PR 只校验和
-打包，不部署。工作流校验实际 HTML，复制静态文件到临时 `_site` 后上传，不运行
-Go 生成器。Pages 使用官方 configure-pages、upload-pages-artifact、deploy-pages 操作。
+静态 HTML 文件直接加入版本控制。Pages 配置为 Deploy from a branch，来源为
+`main / (root)`，仓库根目录就是网站根目录；`.nojekyll` 保持原文件静态发布。
+不再维护发布文件复制清单或自定义打包部署工作流，也不运行 Go 生成器。
+独立的 Check website 工作流校验 main 推送及 PR，校验不作为分支发布的前置条件。
 
 ## 内容与视觉
 
@@ -87,7 +88,7 @@ README／About／发布说明反链单独授权，不在本次改动框架仓库
 参考：
 
 - [GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)
-- [Pages 自定义工作流](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
+- [Pages 发布来源配置](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
 - [Google SEO 指南](https://developers.google.com/search/docs/fundamentals/seo-starter-guide)
 - [Google 多语言页面](https://developers.google.com/search/docs/specialty/international/localized-versions)
 - [Bing 接入流程](https://www.bing.com/webmasters/help/getting-started-checklist-66a806de)

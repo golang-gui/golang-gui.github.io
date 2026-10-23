@@ -78,9 +78,15 @@ or translation before regenerating, because refreshing replaces the HTML files.
 - Copy approved screenshots and original-color logos from GOUI. Do not overwrite framework files.
 - Do not add fake search verification codes, ratings, testimonials or unsupported performance claims.
 
-Pushes to `main` validate and publish the checked-in static files through GitHub
-Actions. Pull requests validate and package files only. Deployment does not run the
-Go generator. `_site/` is only a temporary copy of the files prepared for upload.
+GitHub Pages uses **Deploy from a branch**, with `main` and `/(root)` as its source.
+The repository root is the website root; `.nojekyll` keeps the files static.
+New pages, assets and verification files are published when committed and pushed,
+without a copy list or a separate output directory. Deployment does not run the Go
+generator.
+
+The Check website workflow validates pushes and pull requests independently of
+Pages. Its result does not gate branch-based publication; run the static check
+before pushing.
 
 ## License
 
