@@ -1,35 +1,35 @@
 {
-  "Version": "v0.3.0",
-  "Published": "2026-10-22",
-  "URL": "https://github.com/golang-gui/goui/releases/tag/v0.3.0",
-  "DemoVersion": "v0.3.0",
-  "DemoPublished": "2026-10-22",
-  "DemoURL": "https://github.com/golang-gui/goui/releases/tag/v0.3.0",
-  "Checksums": "https://github.com/golang-gui/goui/releases/download/v0.3.0/SHA256SUMS",
+  "Version": "v0.4.0",
+  "Published": "2026-10-26",
+  "URL": "https://github.com/golang-gui/goui/releases/tag/v0.4.0",
+  "DemoVersion": "v0.4.0",
+  "DemoPublished": "2026-10-26",
+  "DemoURL": "https://github.com/golang-gui/goui/releases/tag/v0.4.0",
+  "Checksums": "https://github.com/golang-gui/goui/releases/download/v0.4.0/SHA256SUMS",
   "Downloads": [
     {
       "Platform": "Windows",
       "Target": "x64 · EXE",
-      "File": "goui-demo-v0.3.0-windows-amd64.exe",
-      "URL": "https://github.com/golang-gui/goui/releases/download/v0.3.0/goui-demo-v0.3.0-windows-amd64.exe",
-      "Bytes": 9385472,
-      "SHA256": "3c4f3cd279a3b0074de90e09d7cc833dca6c2f93039cfa4b8d9881ebc69a0e59"
+      "File": "goui-demo-v0.4.0-windows-amd64.exe",
+      "URL": "https://github.com/golang-gui/goui/releases/download/v0.4.0/goui-demo-v0.4.0-windows-amd64.exe",
+      "Bytes": 9963008,
+      "SHA256": "6548ef55de9f1b06e4af24159510d77b1ae8c70a533060b88e9083f92ab63f08"
     },
     {
       "Platform": "macOS",
       "Target": "Apple Silicon · .app ZIP",
-      "File": "goui-demo-v0.3.0-darwin-arm64.zip",
-      "URL": "https://github.com/golang-gui/goui/releases/download/v0.3.0/goui-demo-v0.3.0-darwin-arm64.zip",
-      "Bytes": 3340956,
-      "SHA256": "53b2f5f365863116d7d18a8c0035938b2389bbc77d8fdf97475656a27c1e51c5"
+      "File": "goui-demo-v0.4.0-darwin-arm64.zip",
+      "URL": "https://github.com/golang-gui/goui/releases/download/v0.4.0/goui-demo-v0.4.0-darwin-arm64.zip",
+      "Bytes": 3488101,
+      "SHA256": "6369f9b296079965d2888cf41d666b65002d2b4c44d00b03fd91c9bf0d13471f"
     },
     {
       "Platform": "Linux",
       "Target": "x64 · X11",
-      "File": "goui-demo-v0.3.0-linux-amd64",
-      "URL": "https://github.com/golang-gui/goui/releases/download/v0.3.0/goui-demo-v0.3.0-linux-amd64",
-      "Bytes": 9220388,
-      "SHA256": "635a8de7f5a6aac11e82e16e91aa1247515e5e76da544af5ec7f4ca1907415a0"
+      "File": "goui-demo-v0.4.0-linux-amd64",
+      "URL": "https://github.com/golang-gui/goui/releases/download/v0.4.0/goui-demo-v0.4.0-linux-amd64",
+      "Bytes": 9797924,
+      "SHA256": "bf359d525880bd7d7c60936a3172ad3fdbb9eb434b58cc6eae9fcc5da7887f22"
     }
   ]
 }

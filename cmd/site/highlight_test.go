@@ -36,7 +36,7 @@ func TestCodeHighlightsShell(t *testing.T) {
 	}{
 		{
 			lang: "bash",
-			src:  "CGO_ENABLED=0 go build -trimpath -ldflags=\"-s -w\" -o hello-goui .\ngo mod init example.com/hello-goui\ngo get github.com/golang-gui/goui@v0.3.0\n./hello-goui\n",
+			src:  "CGO_ENABLED=0 go build -trimpath -ldflags=\"-s -w\" -o hello-goui .\ngo mod init example.com/hello-goui\ngo get github.com/golang-gui/goui@v0.4.0\n./hello-goui\n",
 			// env var, number, commands, subcommands, flags, module path, version, string
 			wants: []string{"tok-nv", "tok-mi", "tok-nb", "tok-nt", "tok-na", "tok-s2"},
 		},

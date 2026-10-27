@@ -239,3 +239,26 @@ README／About／发布说明反链单独授权，不在本次改动框架仓库
 - 修正版与处理报告保存在 `demo-macos-transparent-v2.png` 和
   `report-macos-v2.json`，实际页面效果为 `page-macos-desktop-v2.png`、
   `page-macos-mobile-v2.png`。GOUI 原仓库与 README 未修改，未推送发布。
+
+### 2026-10-27 更新 GOUI v0.4.0
+
+- 中英文首页与教程跟随正式发布的 v0.4.0；安装命令、API／文档链接、FAQ、
+  JSON-LD 版本及 404 页页尾同步更新，保留现有布局、原色 Logo 与三平台截图。
+- `content/release.json` 的发布日期为 2026-10-26；三平台下载文件名、URL、
+  字节大小和 SHA-256 与 GitHub 正式 Release 元数据及公开 SHA256SUMS 核对一致。
+  页面显示 Windows EXE 9.50 MiB、macOS .app ZIP 3.33 MiB、Linux 可执行文件
+  9.34 MiB，仍区分压缩包大小与可执行文件大小，不重写历史开发内存测量。
+- 功能介绍补充 Tooltip、菜单按钮组、长段落有界排版和声明式内容组合；没有将
+  规划中的子菜单、原生系统菜单栏或其他未验收目标写为已支持能力。
+- Linux amd64／Go 1.25.8：`CGO_ENABLED=0 go test ./... -count=1`、
+  `go vet ./...`、`python3 scripts/check_site.py`、`node --check assets/site.js`
+  及空白检查通过。翻译键一致，四个正式页面和 404 的本地链接／锚点／元数据通过。
+- 首页与教程两份原始 Go 示例复制到仓库外模块，通过公共 proxy 获取 v0.4.0，
+  不使用本地 replace；Linux amd64、Windows amd64、macOS arm64 的 no-cgo
+  构建全部通过。未启动 GUI 示例，不将交叉编译算作原生窗口验收。
+- 本机 Chrome 156.0.8078.47 无头浏览器检查五页的 1440／390px 布局，并追加
+  四个正式页面禁用 JavaScript 的检查，共 18 组通过；没有页面级横向溢出、
+  脚本异常或资源错误。下载入口、大小和日期正确，首页三平台截图切换正常，
+  无脚本时三张截图均可读；浏览器结果及截图保存在仓库外临时目录。
+- 本轮只更新本地网站仓库，尚未提交、推送或触发 Pages 发布；未修改 GOUI 框架
+  仓库，也未将本机 Chromium 检查当作 Safari／Firefox 或线上发布验收。

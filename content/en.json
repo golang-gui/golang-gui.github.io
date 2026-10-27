@@ -5,7 +5,7 @@
     "homeTitle": "GOUI — Lightweight Golang GUI Framework, No cgo",
     "homeDescription": "Build lightweight, modern desktop apps in Go with GOUI. A native Golang GUI framework for Windows, macOS and Linux, without cgo, GCC or a browser engine. Ships an AI skill, semantic UI snapshots for plain-text models, and an opt-in local automation protocol.",
     "startTitle": "Go GUI Tutorial — Build Your First GOUI Desktop App",
-    "startDescription": "Create your first Go desktop GUI with GOUI v0.3.0. Install the module, build a counter app with CGO_ENABLED=0, and learn platform runtime requirements.",
+    "startDescription": "Create your first Go desktop GUI with GOUI v0.4.0. Install the module, build a counter app with CGO_ENABLED=0, and learn platform runtime requirements.",
     "skip": "Skip to content",
     "navFeatures": "Features",
     "navDemo": "Demo",
@@ -40,7 +40,7 @@
     "featuresLead": "GOUI provides the foundations and controls for small desktop apps, from utilities and note-taking tools to data-oriented workspaces.",
     "architectureTitle": "Use only the layers you need.",
     "architectureLead": "Learned from GTK4, Flutter, Qt, Avalonia and SwiftUI. Adapted to Go, rather than copied wholesale.",
-    "layerUI": "Declarative views and explicit update coordination",
+    "layerUI": "Declarative views, composition and explicit update coordination",
     "layerGUI": "Widgets, layouts, painting, events, focus and signals",
     "layerPlatform": "Native windows, input, drawing and typography",
     "codeTitle": "A window in a few lines.",
@@ -62,7 +62,7 @@
     "copied": "Copied",
     "copyFailed": "Copy unavailable. Select the code and copy it manually.",
     "downloadTitle": "Try the demo",
-    "downloadLead": "The demo brings together editing, data views, detachable tabs, overlays, graphics and system integration. Try light/dark modes, accent colors and eight UI languages.",
+    "downloadLead": "The demo brings together editing, data views, detachable tabs, overlays, graphics and system integration. v0.4.0 adds grouped menu buttons, tooltips and large-text samples. Try light/dark modes, accent colors and eight UI languages.",
     "download": "Download demo",
     "downloadSize": "Published download",
     "checksum": "SHA-256 checksums",
@@ -75,7 +75,7 @@
     "windowsText": "Windows x64 · Win32 windows · DirectWrite text · Direct2D, OpenGL or Software drawing.",
     "macText": "macOS Apple Silicon · AppKit windows · Core Text · OpenGL or Software drawing. Signing and notarization remain application distribution steps.",
     "linuxText": "Linux x64 · X11 · Pango/Cairo text · OpenGL or Software drawing. Needs native X11, GL, GLib, Fontconfig, Pango/Cairo and GTK runtime libraries. Wayland sessions require XWayland; behavior must be checked on the target desktop.",
-    "limitations": "v0.3.0 APIs are still evolving. Touch, additional platforms and window systems, more application controls, and continued performance work are on the roadmap.",
+    "limitations": "v0.4.0 APIs are still evolving. Touch, additional platforms and window systems, more application controls, and continued performance work are on the roadmap.",
     "faqTitle": "A few useful answers.",
     "ctaTitle": "Keep your app in Go.",
     "ctaText": "Start with a small window. Grow into the layers and controls your application actually needs.",
@@ -84,7 +84,7 @@
     "footerAttribution": "GOUI artwork adapts the Go gopher by Renee French (CC BY 4.0).",
     "footerSource": "Website source",
     "startHeading": "A Go GUI, in a few steps.",
-    "startLead": "Build a small counter application with GOUI v0.3.0. The same interface code targets Windows, macOS and Linux; no C/C++ compiler is needed.",
+    "startLead": "Build a small counter application with GOUI v0.4.0. The same interface code targets Windows, macOS and Linux; no C/C++ compiler is needed.",
     "prereqTitle": "Before you begin",
     "prereqText": "Install Go 1.24 or newer and use a supported desktop environment. The published demo targets Windows x64, macOS Apple Silicon and Linux x64/X11. Linux also needs the native runtime libraries described below.",
     "stepOne": "Create a module",
@@ -99,7 +99,7 @@
     "stepFourText": "ui is the declarative adapter; gui provides imperative widgets; widgets contains additional controls. Application behavior belongs to your app, not the view declarations.",
     "stepFive": "Develop with an AI assistant",
     "stepFiveText": "Install the official goui-app skill so your coding assistant knows GOUI application development. Send the following instruction to your tool; whether it loads skills is decided by the tool itself.",
-    "linkAPI": "Browse the v0.3.0 API",
+    "linkAPI": "Browse the v0.4.0 API",
     "linkWidgets": "Additional controls",
     "linkCustom": "Custom widgets and views",
     "linkSkill": "Develop with an AI assistant",
@@ -108,7 +108,7 @@
     "packagingLink": "Read the build and package guide",
     "requirementsTitle": "Runtime requirements",
     "nextTitle": "You're ready to build something small.",
-    "nextText": "Try the demo, browse the examples, then implement the application that matters to you. v0.3.0 is a starting point, with APIs still evolving.",
+    "nextText": "Try the demo, browse the examples, then implement the application that matters to you. v0.4.0 is a starting point, with APIs still evolving.",
     "dependenciesLead": "Maintained rendering dependencies:",
     "nanovgoRole": "(OpenGL)",
     "dependenciesJoin": "and",
@@ -117,11 +117,11 @@
   "Features": [
     {
       "Title": "Everyday controls",
-      "Text": "Buttons, labels, icons, menus, dropdowns, check/radio buttons, switches and linear or circular progress indicators."
+      "Text": "Buttons, labels, icons, menus, grouped menu buttons, tooltips, dropdowns, check/radio buttons, switches and linear or circular progress indicators."
     },
     {
       "Title": "Editing that feels native",
-      "Text": "Unicode text editing, CJK IME, selection, undo/redo, clipboard, keyboard shortcuts and Tab focus navigation."
+      "Text": "Unicode text editing, CJK IME, selection, undo/redo, clipboard, shortcuts and Tab navigation. Long paragraphs use bounded native layout windows."
     },
     {
       "Title": "Data and flexible layouts",
@@ -154,7 +154,7 @@
       "Text": "Supported targets can be built with the Go toolchain without cgo. Packaging, signing and actual platform validation are separate steps; a successful build does not verify native behavior."
     },
     {
-      "Title": "Is everything in v0.3.0 stable?",
+      "Title": "Is everything in v0.4.0 stable?",
       "Text": "No. This release is intended for building small applications and gathering practical feedback. Public APIs continue to evolve; pin a version and review changes when upgrading."
     },
     {
