@@ -262,3 +262,23 @@ README／About／发布说明反链单独授权，不在本次改动框架仓库
   无脚本时三张截图均可读；浏览器结果及截图保存在仓库外临时目录。
 - 本轮只更新本地网站仓库，尚未提交、推送或触发 Pages 发布；未修改 GOUI 框架
   仓库，也未将本机 Chromium 检查当作 Safari／Firefox 或线上发布验收。
+
+### 2026-11-15 更新 GOUI v0.8.0
+
+- 中英文首页与教程跟随正式发布的 v0.8.0；安装命令、API／文档链接、FAQ、
+  JSON-LD 版本及 404 页页尾同步更新。按本轮约定复用仓库现有三平台截图，
+  不重新运行 Demo 截图。
+- `content/release.json` 的发布日期为 2026-11-15；三平台下载文件名、URL、
+  字节大小和 SHA-256 与 GitHub Release API 元数据及公开 SHA256SUMS 核对一致。
+  页面显示 Windows EXE 11.01 MiB、macOS .app ZIP 3.78 MiB、Linux 可执行文件
+  11.79 MiB，仍区分压缩包大小与可执行文件大小。
+- Demo 介绍与功能条目按 Release Notes 更新：ListRow 设置与操作条目、五种表格
+  边框外观、树连续选区、三击选词／逻辑行、可调列宽；未将未验收目标写为已支持。
+- 体积测量按 v0.8.0 README 更新为最小应用 6.02–6.51 MiB（Go 1.25.8、
+  CGO_ENABLED=0、-trimpath、剥离符号）；历史 PSS 内存测量保持不变。
+- Linux amd64：`gofmt`、`go vet ./cmd/site/`、`go test ./...`、
+  `python3 scripts/check_site.py`、`node --check assets/site.js` 通过；双语翻译
+  键对齐，五个页面无残留 v0.4.0 与旧日期。`skills/INSTALL.md`、`widgets/`、
+  `doc/CustomWidgetView.md`、`gui/dev/doc.go` 在 v0.8.0 tag 的 tree 中核对存在。
+- 本轮未复验示例模块的三平台 no-cgo 构建，未做无头浏览器布局检查；未修改
+  GOUI 框架仓库。改动已本地提交，按要求暂不推送、不触发 Pages 发布。
